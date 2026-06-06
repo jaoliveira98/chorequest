@@ -11,11 +11,13 @@ struct QuickLogView: View {
     @Query(sort: \Participant.createdAt, order: .forward)
     private var participants: [Participant]
 
-    @Query(
-        filter: #Predicate<Chore> { $0.isArchived == false },
-        sort: [SortDescriptor(\Chore.sortOrder), SortDescriptor(\Chore.createdAt)]
-    )
-    private var chores: [Chore]
+    @Query(sort: [SortDescriptor(\Chore.sortOrder), SortDescriptor(\Chore.createdAt)])
+    private var allChores: [Chore]
+
+    /// Active (non-archived) chores shown in the quick-log grid. Filtering in
+    /// code (rather than a #Predicate in the @Query) keeps the query expression
+    /// simple enough for the Swift type-checker and matches ManageView.
+    private var chores: [Chore] { allChores.filter { !$0.isArchived } }
 
     @AppStorage("lastLoggerUUID") private var lastLoggerUUID: String = ""
 
