@@ -23,12 +23,13 @@ final class Participant {
     var completions: [Completion] = []
 
     init(
+        uuid: UUID = UUID(),
         name: String,
         emoji: String = "🙂",
         colorHex: String = "#7C5CFF",
         createdAt: Date = .now
     ) {
-        self.uuid = UUID()
+        self.uuid = uuid
         self.name = name
         self.emoji = emoji
         self.colorHex = colorHex

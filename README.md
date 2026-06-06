@@ -9,6 +9,19 @@ online.
 - **Zero third-party dependencies**
 - **Not published anywhere** — you build it onto your own iPhone from Xcode
 
+## Features
+
+- 🏆 **Leaderboard** — rank everyone by points for **Today / This Week / All Time**, with top-3
+  medals, day streaks, and animated totals.
+- ⚡ **One-tap logging** — pick who's logging once, then tap chores to record them. Each log fires a
+  haptic, a confetti burst, and a little "+points" celebration. Long-press to log for someone else.
+- 🕑 **History** — every chore grouped by day with the exact time it was done; filter by person,
+  swipe to remove mistakes.
+- 📊 **Stats** — Swift Charts views of points per person and a daily trend (last 7 or 30 days).
+- 👥 **Unlimited participants** and fully **customizable chores** (emoji, color, and points each).
+- 💾 **Export / Import backup** to Files — your safety net against ever losing data.
+- 🌗 Dark mode, Dynamic Type, VoiceOver labels, and Reduce Motion all supported.
+
 ---
 
 ## Requirements
@@ -41,6 +54,22 @@ reinstall it. **Your saved data is preserved** across re-signs and app updates; 
 *delete* the app. (A paid Apple Developer Program account, $99/yr, extends this to a year — no code
 changes needed.) You can also use the in-app **Export backup** as extra insurance (CQ-5).
 
+## Backups
+
+Open **Manage → Backup** to **Export** a `.json` snapshot of everything to Files (iCloud Drive, etc.),
+or **Restore** from one. Restore replaces all current data and relinks everything by stable id, so a
+restored backup is identical to the original — useful if you ever reinstall the app.
+
+## Running the tests
+
+The `ChoreQuestTests` target covers the data-loss-critical logic (snapshot immutability, cascade vs.
+nullify deletes, backup round-trip, seeder idempotency, streak math, hex parsing):
+
+```bash
+xcodebuild test -scheme ChoreQuest -destination 'platform=iOS Simulator,name=iPhone 16'
+```
+…or just press **⌘U** in Xcode.
+
 ## Regenerating the Xcode project
 
 The source of truth for the project is [`project.yml`](project.yml) (XcodeGen). If you add/rename
@@ -48,26 +77,31 @@ folders and want a clean project file:
 ```bash
 xcodegen generate
 ```
+The app icon is generated from code (no design tools needed):
+```bash
+swift tools/AppIconGenerator.swift
+```
 
 ## Project layout
 
 ```
 project.yml                  XcodeGen spec (source of truth)
 ChoreQuest.xcodeproj/        Generated Xcode project (committed for convenience)
+tools/AppIconGenerator.swift CoreGraphics script that draws the app icon
 ChoreQuest/
-  ChoreQuestApp.swift        App entry point
-  Views/                     SwiftUI screens
-    Components/              Reusable views
+  ChoreQuestApp.swift        App entry point + SwiftData container & seeding
+  Models/                    SwiftData @Models (Participant, Chore, Completion)
+  Views/                     SwiftUI screens (Leaderboard, Log, History, Manage, Stats)
+    Components/              Reusable views (AvatarView, ConfettiView, pickers, …)
+  Helpers/                   Color/date utils, haptics, seeding, backup
   Resources/                 Assets.xcassets (app icon, accent color)
-  Models/                    SwiftData @Models           (added in CQ-2)
-  Helpers/                   Small utilities             (added in CQ-2+)
-Tests/                       Pure-logic unit tests        (added in CQ-5)
+Tests/                       Unit tests
 ```
 
 ## Roadmap (tracked as issues / PRs)
 
-- **CQ-1** Project scaffold (this PR) — buildable empty shell
-- **CQ-2** Data layer + Manage screen (people & chores)
-- **CQ-3** Quick Log fast-add flow
-- **CQ-4** Leaderboard + History
-- **CQ-5** Polish, stats, backup, tests
+- ✅ **CQ-1** Project scaffold — buildable shell
+- ✅ **CQ-2** Data layer + Manage screen (people & chores)
+- ✅ **CQ-3** Quick Log fast-add flow
+- ✅ **CQ-4** Leaderboard + History
+- ✅ **CQ-5** Polish, stats, backup, tests

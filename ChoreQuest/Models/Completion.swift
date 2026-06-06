@@ -22,6 +22,7 @@ final class Completion {
     var chore: Chore?
 
     init(
+        uuid: UUID = UUID(),
         completedAt: Date = .now,
         pointsAwarded: Int,
         choreName: String,
@@ -29,7 +30,7 @@ final class Completion {
         participant: Participant?,
         chore: Chore?
     ) {
-        self.uuid = UUID()
+        self.uuid = uuid
         self.completedAt = completedAt
         self.pointsAwarded = pointsAwarded
         self.choreName = choreName

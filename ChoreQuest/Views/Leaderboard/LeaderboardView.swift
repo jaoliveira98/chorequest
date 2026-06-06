@@ -9,6 +9,8 @@ struct LeaderboardView: View {
 
     @AppStorage("leaderboardRange") private var rangeRaw: String = TimeRange.week.rawValue
 
+    @State private var showingStats = false
+
     private var range: TimeRange {
         TimeRange(rawValue: rangeRaw) ?? .week
     }
@@ -52,6 +54,28 @@ struct LeaderboardView: View {
                 }
             }
             .navigationTitle("Leaderboard")
+            .toolbar {
+                if !participants.isEmpty {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            showingStats = true
+                        } label: {
+                            Image(systemName: "chart.bar.xaxis")
+                        }
+                        .accessibilityLabel("Stats")
+                    }
+                }
+            }
+            .sheet(isPresented: $showingStats) {
+                NavigationStack {
+                    StatsView()
+                        .toolbar {
+                            ToolbarItem(placement: .topBarLeading) {
+                                Button("Done") { showingStats = false }
+                            }
+                        }
+                }
+            }
         }
     }
 

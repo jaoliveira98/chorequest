@@ -21,6 +21,20 @@
                ReferencedContainer = "container:ChoreQuest.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DED45E51C12515A8FDD252F9"
+               BuildableName = "ChoreQuestTests.xctest"
+               BlueprintName = "ChoreQuestTests"
+               ReferencedContainer = "container:ChoreQuest.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -39,7 +53,20 @@
          </BuildableReference>
       </MacroExpansion>
       <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DED45E51C12515A8FDD252F9"
+               BuildableName = "ChoreQuestTests.xctest"
+               BlueprintName = "ChoreQuestTests"
+               ReferencedContainer = "container:ChoreQuest.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <CommandLineArguments>
+      </CommandLineArguments>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"

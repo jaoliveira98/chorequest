@@ -26,6 +26,7 @@ final class Chore {
     var completions: [Completion] = []
 
     init(
+        uuid: UUID = UUID(),
         name: String,
         emoji: String = "✅",
         points: Int = 1,
@@ -34,7 +35,7 @@ final class Chore {
         sortOrder: Int = 0,
         createdAt: Date = .now
     ) {
-        self.uuid = UUID()
+        self.uuid = uuid
         self.name = name
         self.emoji = emoji
         self.points = points

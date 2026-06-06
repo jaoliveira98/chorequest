@@ -29,8 +29,10 @@ enum Seeder {
 
     /// Inserts the default chores exactly once (tracked by a UserDefaults flag so
     /// it never re-seeds, even if the user later deletes every chore).
-    static func seedIfNeeded(context: ModelContext) {
-        guard !UserDefaults.standard.bool(forKey: didSeedKey) else { return }
+    ///
+    /// `defaults` is injectable so tests can use an isolated suite.
+    static func seedIfNeeded(context: ModelContext, defaults: UserDefaults = .standard) {
+        guard !defaults.bool(forKey: didSeedKey) else { return }
 
         for (index, seed) in defaultChores.enumerated() {
             context.insert(
@@ -46,7 +48,7 @@ enum Seeder {
 
         do {
             try context.save()
-            UserDefaults.standard.set(true, forKey: didSeedKey)
+            defaults.set(true, forKey: didSeedKey)
         } catch {
             // If saving failed, leave the flag unset so we retry next launch.
             print("ChoreQuest: failed to seed default chores — \(error)")
