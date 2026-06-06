@@ -84,8 +84,10 @@ struct ConfettiView: View {
         pieces.append(contentsOf: newPieces)
 
         // Prune this batch once it has finished so the TimelineView can pause.
+        // Hop to the main actor explicitly: `pieces` is @State and must only be
+        // mutated on the main thread (Swift 5 mode won't diagnose this for us).
         let maxLife = (newPieces.map(\.lifetime).max() ?? 1.7) + 0.1
-        Task {
+        Task { @MainActor in
             try? await Task.sleep(for: .seconds(maxLife))
             let cutoff = Date()
             pieces.removeAll { cutoff.timeIntervalSince($0.birth) >= $0.lifetime }

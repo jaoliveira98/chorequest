@@ -50,7 +50,9 @@ struct QuickLogView: View {
                 ParticipantEditor()
             }
             .onAppear(perform: restoreSelection)
-            .onChange(of: participants.count) { _, _ in restoreSelection() }
+            // Key on membership (not just count) so deleting one person and
+            // adding another between appearances still refreshes the selection.
+            .onChange(of: participants.map(\.persistentModelID)) { _, _ in restoreSelection() }
         }
     }
 
