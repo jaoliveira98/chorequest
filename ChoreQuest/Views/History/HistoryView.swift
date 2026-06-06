@@ -22,6 +22,11 @@ struct HistoryView: View {
         }
     }
 
+    private var filterDisplayName: String {
+        let name = filter?.name ?? ""
+        return name.isEmpty ? "this person" : name
+    }
+
     /// Completions bucketed by day, newest day first.
     private var grouped: [(day: Date, items: [Completion])] {
         let buckets = Dictionary(grouping: filtered) { DateUtils.startOfDay($0.completedAt) }
@@ -37,7 +42,7 @@ struct HistoryView: View {
                     emptyState
                 } else if filtered.isEmpty {
                     ContentUnavailableView(
-                        "Nothing for \(filter?.name ?? "")",
+                        "Nothing for \(filterDisplayName)",
                         systemImage: "person.crop.circle.badge.questionmark",
                         description: Text("No chores logged by this person yet.")
                     )

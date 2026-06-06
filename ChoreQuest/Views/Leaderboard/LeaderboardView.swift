@@ -82,7 +82,9 @@ struct LeaderboardView: View {
                 }
             }
         }
-        .animation(.spring(response: 0.4, dampingFraction: 0.8), value: range)
+        // Animate rank reordering both when the range changes and when points
+        // change from a new log or a deleted completion.
+        .animation(.spring(response: 0.4, dampingFraction: 0.8), value: standings.map(\.points))
     }
 
     private var emptyState: some View {
