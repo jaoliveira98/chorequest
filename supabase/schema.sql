@@ -71,6 +71,39 @@ create index if not exists participants_household_updated on public.participants
 create index if not exists chores_household_updated       on public.chores       (household_id, updated_at);
 create index if not exists completions_household_updated  on public.completions  (household_id, updated_at);
 
+-- ── Last-write-wins guard ────────────────────────────────────────────────────
+-- Every device pushes its full row set via upsert. Without this, a device still
+-- holding a stale copy of a row could overwrite a newer change from the other
+-- phone (e.g. silently undo a delete). On UPDATE, keep whichever version has the
+-- newer updated_at; an older incoming row is ignored (no-op).
+create or replace function public.lww_guard()
+returns trigger language plpgsql as $$
+begin
+    if NEW.updated_at < OLD.updated_at then
+        return OLD; -- incoming is stale → keep the existing (newer) row
+    end if;
+    -- Deletions are terminal: a soft-deleted row is never un-deleted by sync
+    -- (recreated items always get a fresh uuid). This also prevents resurrection
+    -- when two writes share the same millisecond timestamp.
+    if OLD.deleted_at is not null and NEW.deleted_at is null then
+        return OLD;
+    end if;
+    return NEW;
+end;
+$$;
+
+drop trigger if exists participants_lww on public.participants;
+create trigger participants_lww before update on public.participants
+    for each row execute function public.lww_guard();
+
+drop trigger if exists chores_lww on public.chores;
+create trigger chores_lww before update on public.chores
+    for each row execute function public.lww_guard();
+
+drop trigger if exists completions_lww on public.completions;
+create trigger completions_lww before update on public.completions
+    for each row execute function public.lww_guard();
+
 -- ── Row Level Security ───────────────────────────────────────────────────────
 alter table public.households        enable row level security;
 alter table public.household_members enable row level security;
