@@ -63,6 +63,23 @@ final class CloudSyncMergeTests: XCTestCase {
         XCTAssertTrue(chore?.isSoftDeleted ?? false)
     }
 
+    func testMergeDoesNotResurrectOnEqualTimestamp() throws {
+        let (manager, container) = try makeManager()
+        let hid = UUID(); let uuid = UUID()
+        let t = Date(timeIntervalSince1970: 5_000)
+        // Local row is soft-deleted at t…
+        manager.mergeChore(RemoteChore(uuid: uuid, householdId: hid, name: "X", emoji: "🧪", points: 1,
+                                       colorHex: nil, isArchived: false, sortOrder: 0,
+                                       createdAt: t, updatedAt: t, deletedAt: t))
+        // …an incoming ACTIVE copy with the SAME updated_at must not revive it.
+        manager.mergeChore(RemoteChore(uuid: uuid, householdId: hid, name: "X", emoji: "🧪", points: 1,
+                                       colorHex: nil, isArchived: false, sortOrder: 0,
+                                       createdAt: t, updatedAt: t, deletedAt: nil))
+
+        let chore = try container.mainContext.fetch(FetchDescriptor<Chore>()).first
+        XCTAssertTrue(chore?.isSoftDeleted ?? false, "equal-timestamp active row must not resurrect a delete")
+    }
+
     func testMergeCompletionLinksByUUID() throws {
         let (manager, container) = try makeManager()
         let hid = UUID()

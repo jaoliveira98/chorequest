@@ -82,6 +82,12 @@ begin
     if NEW.updated_at < OLD.updated_at then
         return OLD; -- incoming is stale → keep the existing (newer) row
     end if;
+    -- Deletions are terminal: a soft-deleted row is never un-deleted by sync
+    -- (recreated items always get a fresh uuid). This also prevents resurrection
+    -- when two writes share the same millisecond timestamp.
+    if OLD.deleted_at is not null and NEW.deleted_at is null then
+        return OLD;
+    end if;
     return NEW;
 end;
 $$;

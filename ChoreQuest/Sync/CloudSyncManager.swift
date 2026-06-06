@@ -232,9 +232,14 @@ final class CloudSyncManager: ObservableObject {
 
     private func pullQuery(_ hid: UUID, table: String) -> [URLQueryItem] {
         let cursor = (defaults.object(forKey: kCursor(table)) as? Date) ?? .distantPast
+        // gte (not gt): timestamps serialize at millisecond precision, so two rows
+        // written in the same millisecond can share the cursor value. gt would
+        // permanently skip a row whose updated_at exactly equals the cursor; gte
+        // re-fetches the boundary rows (a harmless no-op in the LWW merge, which
+        // only applies strictly-newer rows) and guarantees nothing is missed.
         return [
             URLQueryItem(name: "household_id", value: "eq.\(hid.uuidString)"),
-            URLQueryItem(name: "updated_at", value: "gt.\(SupabaseCoding.isoString(cursor))"),
+            URLQueryItem(name: "updated_at", value: "gte.\(SupabaseCoding.isoString(cursor))"),
             URLQueryItem(name: "order", value: "updated_at.asc")
         ]
     }
