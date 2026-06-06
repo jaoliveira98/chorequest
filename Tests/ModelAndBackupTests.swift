@@ -100,6 +100,18 @@ final class ModelAndBackupTests: XCTestCase {
         XCTAssertEqual(completions.first?.pointsAwarded, 2)
     }
 
+    func testRestoreFromInvalidDataLeavesExistingDataIntact() throws {
+        let context = try makeContext()
+        context.insert(Participant(name: "Keep me"))
+        try context.save()
+
+        let garbage = Data("not a valid backup".utf8)
+        XCTAssertThrowsError(try Backup.restore(from: garbage, into: context))
+
+        // The bad file is rejected at decode time, before any data is touched.
+        XCTAssertEqual(try context.fetchCount(FetchDescriptor<Participant>()), 1)
+    }
+
     func testSeederSeedsExactlyOnce() throws {
         let context = try makeContext()
         let defaults = UserDefaults(suiteName: "test-\(UUID().uuidString)")!

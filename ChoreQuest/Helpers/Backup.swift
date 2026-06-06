@@ -90,53 +90,73 @@ enum Backup {
 
     /// Decodes a backup and **replaces** all current data with it. Returns counts
     /// of what was imported. Throws on malformed/incompatible files.
+    ///
+    /// This is atomic: decoding happens first (a bad file never touches the
+    /// store), and the wipe + rebuild are staged on the context as a single unit
+    /// committed by one `save()`. If anything fails, `rollback()` discards every
+    /// staged change, leaving the existing data exactly as it was.
     @discardableResult
     static func restore(from data: Data, into context: ModelContext) throws -> RestoreSummary {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         let file = try decoder.decode(File.self, from: data)
 
-        guard file.version <= version else {
+        guard file.version <= Backup.version else {
             throw BackupError.unsupportedVersion(file.version)
         }
 
-        // Wipe existing data.
-        try context.delete(model: Completion.self)
-        try context.delete(model: Chore.self)
-        try context.delete(model: Participant.self)
+        do {
+            // Stage deletion of existing rows individually (not a batch delete) so
+            // a rollback can undo them if the save fails partway through.
+            for completion in try context.fetch(FetchDescriptor<Completion>()) {
+                context.delete(completion)
+            }
+            for chore in try context.fetch(FetchDescriptor<Chore>()) {
+                context.delete(chore)
+            }
+            for participant in try context.fetch(FetchDescriptor<Participant>()) {
+                context.delete(participant)
+            }
 
-        // Rebuild, indexing by uuid so relationships can be relinked.
-        var participantsByUUID: [UUID: Participant] = [:]
-        for dto in file.participants {
-            let participant = Participant(uuid: dto.uuid, name: dto.name, emoji: dto.emoji,
-                                          colorHex: dto.colorHex, createdAt: dto.createdAt)
-            context.insert(participant)
-            participantsByUUID[dto.uuid] = participant
+            // Rebuild, indexing by uuid so relationships can be relinked.
+            var participantsByUUID: [UUID: Participant] = [:]
+            for dto in file.participants {
+                let participant = Participant(uuid: dto.uuid, name: dto.name, emoji: dto.emoji,
+                                              colorHex: dto.colorHex, createdAt: dto.createdAt)
+                context.insert(participant)
+                participantsByUUID[dto.uuid] = participant
+            }
+
+            var choresByUUID: [UUID: Chore] = [:]
+            for dto in file.chores {
+                let chore = Chore(uuid: dto.uuid, name: dto.name, emoji: dto.emoji, points: dto.points,
+                                  colorHex: dto.colorHex, isArchived: dto.isArchived,
+                                  sortOrder: dto.sortOrder, createdAt: dto.createdAt)
+                context.insert(chore)
+                choresByUUID[dto.uuid] = chore
+            }
+
+            for dto in file.completions {
+                let completion = Completion(
+                    uuid: dto.uuid,
+                    completedAt: dto.completedAt,
+                    pointsAwarded: dto.pointsAwarded,
+                    choreName: dto.choreName,
+                    choreEmoji: dto.choreEmoji,
+                    participant: dto.participantUUID.flatMap { participantsByUUID[$0] },
+                    chore: dto.choreUUID.flatMap { choresByUUID[$0] }
+                )
+                context.insert(completion)
+            }
+
+            try context.save()
+        } catch {
+            // Nothing was persisted — discard the staged wipe/rebuild and keep
+            // the user's existing data intact.
+            context.rollback()
+            throw error
         }
 
-        var choresByUUID: [UUID: Chore] = [:]
-        for dto in file.chores {
-            let chore = Chore(uuid: dto.uuid, name: dto.name, emoji: dto.emoji, points: dto.points,
-                              colorHex: dto.colorHex, isArchived: dto.isArchived,
-                              sortOrder: dto.sortOrder, createdAt: dto.createdAt)
-            context.insert(chore)
-            choresByUUID[dto.uuid] = chore
-        }
-
-        for dto in file.completions {
-            let completion = Completion(
-                uuid: dto.uuid,
-                completedAt: dto.completedAt,
-                pointsAwarded: dto.pointsAwarded,
-                choreName: dto.choreName,
-                choreEmoji: dto.choreEmoji,
-                participant: dto.participantUUID.flatMap { participantsByUUID[$0] },
-                chore: dto.choreUUID.flatMap { choresByUUID[$0] }
-            )
-            context.insert(completion)
-        }
-
-        try context.save()
         return RestoreSummary(
             participants: file.participants.count,
             chores: file.chores.count,
