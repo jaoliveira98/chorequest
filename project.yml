@@ -14,9 +14,10 @@ settings:
     CURRENT_PROJECT_VERSION: "1"
     SWIFT_VERSION: "5.0"
     CODE_SIGN_STYLE: Automatic
-    # Leave DEVELOPMENT_TEAM empty: set it once in Xcode (Signing & Capabilities)
-    # to your free Apple ID team. It is intentionally not committed.
-    DEVELOPMENT_TEAM: ""
+    # Personal-team id, committed so it survives `xcodegen generate` / git pull and
+    # both targets stay signed. It's not a secret (it ships inside every app) and
+    # this repo is private. Replace it if you build under a different Apple ID.
+    DEVELOPMENT_TEAM: "D5TCJMS37M"
 
 targets:
   ChoreQuest:
