@@ -45,6 +45,9 @@ targets:
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         INFOPLIST_KEY_CFBundleDisplayName: ChoreQuest
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+        # App uses only standard HTTPS (Supabase) → exempt from export compliance.
+        # Declaring this skips the encryption question on every TestFlight upload.
+        INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
       configs:
         Debug:
           ENABLE_TESTABILITY: YES # allow @testable import from the test target
@@ -93,6 +96,7 @@ targets:
         INFOPLIST_KEY_CFBundleDisplayName: ChoreQuest
         INFOPLIST_KEY_WKApplication: YES
         INFOPLIST_KEY_WKCompanionAppBundleIdentifier: com.jaoliveira98.chorequest
+        INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
 
 schemes:
   ChoreQuest:
