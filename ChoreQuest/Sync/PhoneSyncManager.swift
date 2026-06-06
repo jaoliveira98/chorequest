@@ -28,7 +28,11 @@ final class PhoneSyncManager: NSObject, ObservableObject {
     func pushSnapshot() {
         guard WCSession.isSupported() else { return }
         let session = WCSession.default
-        guard session.activationState == .activated else { return }
+        // Only push when there's actually a watch app to receive it — avoids
+        // WCErrorCodeWatchAppNotInstalled (7006) log spam when no watch is set up.
+        guard session.activationState == .activated,
+              session.isPaired,
+              session.isWatchAppInstalled else { return }
         do {
             let data = try WatchSyncWire.encode(makeSnapshot())
             try session.updateApplicationContext([WatchSyncWire.snapshotKey: data])
