@@ -84,6 +84,8 @@ final class PhoneSyncManager: NSObject, ObservableObject {
 
             let participant = try context.fetch(FetchDescriptor<Participant>())
                 .first { $0.uuid == dto.participantUUID }
+            // Don't create an owner-less or deleted-owner completion.
+            guard let participant, !participant.isSoftDeleted else { return }
             let chore = try context.fetch(FetchDescriptor<Chore>())
                 .first { $0.uuid == dto.choreUUID }
 

@@ -16,7 +16,7 @@ struct HistoryView: View {
     @State private var filter: Participant?
 
     private var visibleCompletions: [Completion] {
-        completions.filter { !$0.isSoftDeleted }
+        completions.filter { !$0.isSoftDeleted && !($0.participant?.isSoftDeleted ?? false) }
     }
 
     private var activeParticipants: [Participant] {

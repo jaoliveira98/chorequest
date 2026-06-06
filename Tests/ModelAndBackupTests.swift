@@ -184,6 +184,30 @@ final class ModelAndBackupTests: XCTestCase {
         XCTAssertFalse(chore.isSoftDeleted)     // the chore itself is untouched
     }
 
+    func testBackupExportExcludesSoftDeletedRows() throws {
+        let context = try makeContext()
+        let keep = Participant(name: "Keep")
+        let goneParticipant = Participant(name: "Gone")
+        let chore = Chore(name: "Dishes", points: 2)
+        let goneChore = Chore(name: "Old", points: 1)
+        context.insert(keep)
+        context.insert(goneParticipant)
+        context.insert(chore)
+        context.insert(goneChore)
+        context.insert(Completion(chore: chore, participant: keep))
+        goneParticipant.softDeleteCascading()
+        goneChore.softDelete()
+        try context.save()
+
+        let data = try Backup.export(from: context)
+        let restoreContext = try makeContext()
+        let summary = try Backup.restore(from: data, into: restoreContext)
+
+        XCTAssertEqual(summary.participants, 1) // only "Keep"
+        XCTAssertEqual(summary.chores, 1)       // only "Dishes"
+        XCTAssertEqual(summary.completions, 1)
+    }
+
     func testTouchAdvancesUpdatedAt() throws {
         let context = try makeContext()
         let chore = Chore(name: "Dishes", points: 2, updatedAt: Date(timeIntervalSince1970: 0))
