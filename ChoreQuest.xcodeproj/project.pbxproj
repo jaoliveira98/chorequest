@@ -49,6 +49,7 @@
 		CEBE641754B5BEC812C68217 /* WatchSyncPayloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E17422B7E224843E177D01 /* WatchSyncPayloads.swift */; };
 		DCF7FBB23F27B6E3A5F1B4C8 /* WatchSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A5E004476357F41137E609 /* WatchSyncManager.swift */; };
 		DD08829A3B81CF429FC1E627 /* PhoneSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DED25671E0FDD06E14B1DE9 /* PhoneSyncManager.swift */; };
+		E48D0B5700505037B609B8B1 /* WatchSyncWireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE49016FC47923DB4B438DF2 /* WatchSyncWireTests.swift */; };
 		E4EFFFB373103D8A16E73261 /* ChoreQuestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E689507EA24D73420DA7CDD /* ChoreQuestApp.swift */; };
 		E66B80402195D726BC46C2FD /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B5676C0E61F1F4BD36C9B1 /* Haptics.swift */; };
 		EA5DDA283C60F7D4A39C6626 /* ModelContext+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E926E39B0E66F62F66130B3 /* ModelContext+Save.swift */; };
@@ -131,6 +132,7 @@
 		F88ECC0400BBDD66EF64BCDA /* Completion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Completion.swift; sourceTree = "<group>"; };
 		FA684CE855A731B2BD6A3BC8 /* ColorHexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHexTests.swift; sourceTree = "<group>"; };
 		FBD1D10DE4D083F7F6887134 /* ColorSwatchPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwatchPicker.swift; sourceTree = "<group>"; };
+		FE49016FC47923DB4B438DF2 /* WatchSyncWireTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncWireTests.swift; sourceTree = "<group>"; };
 		FF814F6FCA440A9722B8D7A3 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		FFE700305EE718ED1A656667 /* Seeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seeder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -182,6 +184,7 @@
 				FA684CE855A731B2BD6A3BC8 /* ColorHexTests.swift */,
 				25A4ED504558241EBF3D4093 /* DateUtilsTests.swift */,
 				40A78283EDDC843678A6BB70 /* ModelAndBackupTests.swift */,
+				FE49016FC47923DB4B438DF2 /* WatchSyncWireTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				4B8950BADC248730D642FB9B /* ColorHexTests.swift in Sources */,
 				B69C0E5DB3EFA3E51E85BDA8 /* DateUtilsTests.swift in Sources */,
 				1759F3E7EE798B1D8258EBA6 /* ModelAndBackupTests.swift in Sources */,
+				E48D0B5700505037B609B8B1 /* WatchSyncWireTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

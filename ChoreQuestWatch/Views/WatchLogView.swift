@@ -33,6 +33,13 @@ struct WatchLogView: View {
             }
             .navigationTitle("ChoreQuest")
             .overlay(alignment: .center) { confirmationPill }
+            .task(id: participants.map(\.id)) {
+                // Commit the resolved selection so it stays stable across snapshot
+                // updates (and drop it if that person was removed).
+                if selectedUUID == nil || !participants.contains(where: { $0.uuid == selectedUUID }) {
+                    selectedUUID = selected?.uuid
+                }
+            }
         }
     }
 
