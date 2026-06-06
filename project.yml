@@ -40,13 +40,36 @@ targets:
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         INFOPLIST_KEY_CFBundleDisplayName: ChoreQuest
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+      configs:
+        Debug:
+          ENABLE_TESTABILITY: YES # allow @testable import from the test target
+
+  ChoreQuestTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: Tests
+    dependencies:
+      - target: ChoreQuest
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.jaoliveira98.chorequest.tests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/ChoreQuest.app/ChoreQuest"
+        BUNDLE_LOADER: "$(TEST_HOST)"
 
 schemes:
   ChoreQuest:
     build:
       targets:
         ChoreQuest: all
+        ChoreQuestTests: [test]
     run:
       config: Debug
+    test:
+      config: Debug
+      targets:
+        - ChoreQuestTests
     archive:
       config: Release
