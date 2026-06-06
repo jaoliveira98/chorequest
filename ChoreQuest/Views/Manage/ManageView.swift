@@ -6,6 +6,7 @@ import UniformTypeIdentifiers
 /// chores. This is where the data behind the game lives.
 struct ManageView: View {
     @Environment(\.modelContext) private var context
+    @EnvironmentObject private var cloud: CloudSyncManager
 
     @Query(sort: \Participant.createdAt, order: .forward)
     private var allParticipants: [Participant]
@@ -22,6 +23,11 @@ struct ManageView: View {
     @State private var editingChore: Chore?
     @State private var participantPendingDelete: Participant?
     @State private var showingResetChoresConfirm = false
+
+    // Cloud sync
+    @State private var showingJoin = false
+    @State private var joinCode = ""
+    @State private var showingLeaveConfirm = false
 
     // Backup
     @State private var exportDocument: BackupDocument?
@@ -48,6 +54,7 @@ struct ManageView: View {
                 peopleSection
                 choresSection
                 if !archivedChores.isEmpty { archivedSection }
+                syncSection
                 backupSection
             }
             .navigationTitle("Manage")
@@ -117,6 +124,31 @@ struct ManageView: View {
                 Button("Cancel", role: .cancel) { }
             } message: {
                 Text("This removes your current chores and restores the default set. Already-logged history is kept. This can't be undone.")
+            }
+            .alert("Join a household", isPresented: $showingJoin) {
+                TextField("Code", text: $joinCode)
+                    .textInputAutocapitalization(.characters)
+                    .autocorrectionDisabled()
+                Button("Join") {
+                    let code = joinCode
+                    joinCode = ""
+                    Task { await cloud.joinHousehold(code: code) }
+                }
+                Button("Cancel", role: .cancel) { joinCode = "" }
+            } message: {
+                Text("Enter the code shown on the other phone. This replaces this phone's data with the household's shared data.")
+            }
+            .confirmationDialog(
+                "Leave this household?",
+                isPresented: $showingLeaveConfirm,
+                titleVisibility: .visible
+            ) {
+                Button("Leave household", role: .destructive) {
+                    Task { await cloud.leaveHousehold() }
+                }
+                Button("Cancel", role: .cancel) { }
+            } message: {
+                Text("This phone stops syncing. Your data stays on this phone but won't be shared anymore.")
             }
         }
     }
@@ -246,6 +278,69 @@ struct ManageView: View {
         }
     }
 
+    // MARK: - Cloud sync
+
+    @ViewBuilder
+    private var syncSection: some View {
+        Section {
+            if cloud.isLinked {
+                HStack {
+                    Label("Household code", systemImage: "house.fill")
+                    Spacer()
+                    Text(cloud.householdCode ?? "—")
+                        .font(.body.monospaced().weight(.semibold))
+                        .textSelection(.enabled)
+                }
+                Button {
+                    Task { await cloud.sync() }
+                } label: {
+                    Label("Sync now", systemImage: "arrow.triangle.2.circlepath")
+                }
+                .disabled(cloud.status == .syncing)
+                Button(role: .destructive) {
+                    showingLeaveConfirm = true
+                } label: {
+                    Label("Leave household", systemImage: "rectangle.portrait.and.arrow.right")
+                }
+            } else {
+                Button {
+                    Task { await cloud.createHousehold() }
+                } label: {
+                    Label("Create a household", systemImage: "house.badge.plus")
+                }
+                Button {
+                    showingJoin = true
+                } label: {
+                    Label("Join with a code", systemImage: "person.badge.plus")
+                }
+            }
+        } header: {
+            Text("Cloud sync")
+        } footer: {
+            syncFooter
+        }
+    }
+
+    @ViewBuilder
+    private var syncFooter: some View {
+        switch cloud.status {
+        case .syncing:
+            Label("Syncing…", systemImage: "arrow.triangle.2.circlepath")
+        case .error:
+            Text(cloud.errorMessage ?? "Sync error").foregroundStyle(.red)
+        case .idle:
+            if cloud.isLinked {
+                if let last = cloud.lastSyncedAt {
+                    Text("Last synced at \(last.formatted(date: .omitted, time: .shortened)). Share the code so another iPhone can join and see the same data.")
+                } else {
+                    Text("Share the code so another iPhone can join and see the same data.")
+                }
+            } else {
+                Text("Create a household to share your data with another iPhone, or join one with its code.")
+            }
+        }
+    }
+
     // MARK: - Backup
 
     private var backupSection: some View {
@@ -342,6 +437,11 @@ struct ManageView: View {
 }
 
 #Preview {
-    ManageView()
-        .modelContainer(for: [Participant.self, Chore.self, Completion.self], inMemory: true)
+    let container = try! ModelContainer(
+        for: Participant.self, Chore.self, Completion.self,
+        configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+    )
+    return ManageView()
+        .modelContainer(container)
+        .environmentObject(CloudSyncManager(container: container))
 }
