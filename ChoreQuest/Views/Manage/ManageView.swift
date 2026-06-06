@@ -21,6 +21,13 @@ struct ManageView: View {
     private var activeChores: [Chore] { chores.filter { !$0.isArchived } }
     private var archivedChores: [Chore] { chores.filter { $0.isArchived } }
 
+    /// Places a new chore after the current highest order so it lands at the end
+    /// of the grid (sortOrder is only meaningful among active chores — see
+    /// `moveChores`).
+    private var nextChoreSortOrder: Int {
+        (chores.map(\.sortOrder).max() ?? -1) + 1
+    }
+
     var body: some View {
         NavigationStack {
             List {
@@ -34,7 +41,7 @@ struct ManageView: View {
             }
             .sheet(isPresented: $showingNewParticipant) { ParticipantEditor() }
             .sheet(item: $editingParticipant) { ParticipantEditor(participant: $0) }
-            .sheet(isPresented: $showingNewChore) { ChoreEditor(nextSortOrder: chores.count) }
+            .sheet(isPresented: $showingNewChore) { ChoreEditor(nextSortOrder: nextChoreSortOrder) }
             .sheet(item: $editingChore) { ChoreEditor(chore: $0) }
             .confirmationDialog(
                 "Delete this person?",
@@ -47,7 +54,7 @@ struct ManageView: View {
                 Button("Delete \(person.name) & history", role: .destructive) {
                     delete(person)
                 }
-                Button("Cancel", role: .cancel) { participantPendingDelete = nil }
+                Button("Cancel", role: .cancel) { }
             } message: { person in
                 Text("This also removes all of \(person.name)'s logged chores. This can't be undone.")
             }
@@ -176,27 +183,29 @@ struct ManageView: View {
     // MARK: - Mutations
 
     private func moveChores(from offsets: IndexSet, to destination: Int) {
+        // Renumber the active chores densely; archived chores keep their own
+        // order, which is fine since the two are always shown in separate lists.
         var reordered = activeChores
         reordered.move(fromOffsets: offsets, toOffset: destination)
         for (index, chore) in reordered.enumerated() {
             chore.sortOrder = index
         }
-        try? context.save()
+        context.saveChanges()
     }
 
     private func setArchived(_ chore: Chore, _ archived: Bool) {
         chore.isArchived = archived
-        try? context.save()
+        context.saveChanges()
     }
 
     private func delete(_ chore: Chore) {
         context.delete(chore)
-        try? context.save()
+        context.saveChanges()
     }
 
     private func delete(_ person: Participant) {
         context.delete(person)
-        try? context.save()
+        context.saveChanges()
         participantPendingDelete = nil
     }
 }

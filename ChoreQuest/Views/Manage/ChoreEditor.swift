@@ -115,7 +115,7 @@ struct ChoreEditor: View {
                 )
             )
         }
-        try? context.save()
+        context.saveChanges()
         dismiss()
     }
 }

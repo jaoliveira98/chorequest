@@ -75,7 +75,7 @@ struct ParticipantEditor: View {
         } else {
             context.insert(Participant(name: trimmedName, emoji: emoji, colorHex: colorHex))
         }
-        try? context.save()
+        context.saveChanges()
         dismiss()
     }
 }

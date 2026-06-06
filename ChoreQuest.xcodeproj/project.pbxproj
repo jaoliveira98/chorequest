@@ -23,11 +23,13 @@
 		B7715360F1814D3B6B37E760 /* Seeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE700305EE718ED1A656667 /* Seeder.swift */; };
 		B9295DA9817D4C5E02DE9C00 /* ColorSwatchPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1D10DE4D083F7F6887134 /* ColorSwatchPicker.swift */; };
 		E4EFFFB373103D8A16E73261 /* ChoreQuestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E689507EA24D73420DA7CDD /* ChoreQuestApp.swift */; };
+		EA5DDA283C60F7D4A39C6626 /* ModelContext+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E926E39B0E66F62F66130B3 /* ModelContext+Save.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		029F908D4A5D6373E3E2FBF1 /* Participant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
 		0B4C0E36DF95B80E7C5BB886 /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
+		2E926E39B0E66F62F66130B3 /* ModelContext+Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModelContext+Save.swift"; sourceTree = "<group>"; };
 		4836F69535BC1F635A582CDE /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		4901A518D853CB635829B5F6 /* ParticipantEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantEditor.swift; sourceTree = "<group>"; };
 		4E689507EA24D73420DA7CDD /* ChoreQuestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreQuestApp.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				F0EFD418CEB760447935F4D2 /* Color+Hex.swift */,
+				2E926E39B0E66F62F66130B3 /* ModelContext+Save.swift */,
 				4836F69535BC1F635A582CDE /* Palette.swift */,
 				FFE700305EE718ED1A656667 /* Seeder.swift */,
 			);
@@ -213,6 +216,7 @@
 				826EFA347464BD15DDF44E20 /* Completion.swift in Sources */,
 				913A2427A581395DC12F4BAC /* EmojiPicker.swift in Sources */,
 				735944A84A637D6EE8AA40CB /* ManageView.swift in Sources */,
+				EA5DDA283C60F7D4A39C6626 /* ModelContext+Save.swift in Sources */,
 				8F544DABFF84140A59AB591F /* Palette.swift in Sources */,
 				1F8FF076D9A4ED92D7381ECB /* Participant.swift in Sources */,
 				1B71AA4006A3B825E2E6F511 /* ParticipantEditor.swift in Sources */,
