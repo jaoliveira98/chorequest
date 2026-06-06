@@ -20,6 +20,11 @@ final class Chore {
     var sortOrder: Int = 0
     var createdAt: Date = Date.now
 
+    // Sync metadata (CQ-12) — see SyncableModel.
+    var updatedAt: Date = Date.now
+    var deletedAt: Date?
+    var householdID: UUID?
+
     /// Deleting a chore keeps past completions readable thanks to the snapshot
     /// fields on `Completion`; this relationship is nullified, not cascaded.
     @Relationship(inverse: \Completion.chore)
@@ -33,7 +38,10 @@ final class Chore {
         colorHex: String? = nil,
         isArchived: Bool = false,
         sortOrder: Int = 0,
-        createdAt: Date = .now
+        createdAt: Date = .now,
+        updatedAt: Date = .now,
+        deletedAt: Date? = nil,
+        householdID: UUID? = nil
     ) {
         self.uuid = uuid
         self.name = name
@@ -43,5 +51,10 @@ final class Chore {
         self.isArchived = isArchived
         self.sortOrder = sortOrder
         self.createdAt = createdAt
+        self.updatedAt = updatedAt
+        self.deletedAt = deletedAt
+        self.householdID = householdID
     }
 }
+
+extension Chore: SyncableModel {}

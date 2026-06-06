@@ -72,6 +72,7 @@ struct ParticipantEditor: View {
             participant.name = trimmedName
             participant.emoji = emoji
             participant.colorHex = colorHex
+            participant.touch()
         } else {
             context.insert(Participant(name: trimmedName, emoji: emoji, colorHex: colorHex))
         }

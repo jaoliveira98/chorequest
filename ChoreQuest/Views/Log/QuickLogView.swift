@@ -10,15 +10,18 @@ struct QuickLogView: View {
     @EnvironmentObject private var sync: PhoneSyncManager
 
     @Query(sort: \Participant.createdAt, order: .forward)
-    private var participants: [Participant]
+    private var allParticipants: [Participant]
 
     @Query(sort: [SortDescriptor(\Chore.sortOrder), SortDescriptor(\Chore.createdAt)])
     private var allChores: [Chore]
 
-    /// Active (non-archived) chores shown in the quick-log grid. Filtering in
-    /// code (rather than a #Predicate in the @Query) keeps the query expression
-    /// simple enough for the Swift type-checker and matches ManageView.
-    private var chores: [Chore] { allChores.filter { !$0.isArchived } }
+    /// Live participants (excludes soft-deleted). All view logic uses this.
+    private var participants: [Participant] { allParticipants.filter { !$0.isSoftDeleted } }
+
+    /// Active chores shown in the quick-log grid (non-archived, non-deleted).
+    /// Filtering in code (rather than a #Predicate in the @Query) keeps the query
+    /// expression simple enough for the Swift type-checker and matches ManageView.
+    private var chores: [Chore] { allChores.filter { !$0.isArchived && !$0.isSoftDeleted } }
 
     @AppStorage("lastLoggerUUID") private var lastLoggerUUID: String = ""
 

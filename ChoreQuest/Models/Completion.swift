@@ -16,6 +16,11 @@ final class Completion {
     var choreName: String = ""
     var choreEmoji: String = "✅"
 
+    // Sync metadata (CQ-12) — see SyncableModel.
+    var updatedAt: Date = Date.now
+    var deletedAt: Date?
+    var householdID: UUID?
+
     /// The person who did it. Cascade-deleted with the participant.
     var participant: Participant?
     /// The originating chore, if it still exists (nullified on chore delete).
@@ -28,7 +33,10 @@ final class Completion {
         choreName: String,
         choreEmoji: String,
         participant: Participant?,
-        chore: Chore?
+        chore: Chore?,
+        updatedAt: Date = .now,
+        deletedAt: Date? = nil,
+        householdID: UUID? = nil
     ) {
         self.uuid = uuid
         self.completedAt = completedAt
@@ -37,6 +45,9 @@ final class Completion {
         self.choreEmoji = choreEmoji
         self.participant = participant
         self.chore = chore
+        self.updatedAt = updatedAt
+        self.deletedAt = deletedAt
+        self.householdID = householdID
     }
 
     /// Convenience initializer that snapshots a chore's current values.
@@ -51,3 +62,5 @@ final class Completion {
         )
     }
 }
+
+extension Completion: SyncableModel {}

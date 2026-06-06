@@ -15,6 +15,10 @@ struct LeaderboardView: View {
         TimeRange(rawValue: rangeRaw) ?? .week
     }
 
+    private var activeParticipants: [Participant] {
+        participants.filter { !$0.isSoftDeleted }
+    }
+
     private struct Standing: Identifiable {
         let id: PersistentIdentifier
         let participant: Participant
@@ -24,13 +28,14 @@ struct LeaderboardView: View {
 
     private var standings: [Standing] {
         let lower = range.lowerBound
-        return participants
+        return activeParticipants
             .map { person in
-                let points = person.completions.reduce(0) { total, completion in
+                let liveCompletions = person.completions.filter { !$0.isSoftDeleted }
+                let points = liveCompletions.reduce(0) { total, completion in
                     if let lower, completion.completedAt < lower { return total }
                     return total + completion.pointsAwarded
                 }
-                let activeDays = Set(person.completions.map { DateUtils.startOfDay($0.completedAt) })
+                let activeDays = Set(liveCompletions.map { DateUtils.startOfDay($0.completedAt) })
                 return Standing(
                     id: person.persistentModelID,
                     participant: person,
@@ -47,7 +52,7 @@ struct LeaderboardView: View {
     var body: some View {
         NavigationStack {
             Group {
-                if participants.isEmpty {
+                if activeParticipants.isEmpty {
                     emptyState
                 } else {
                     leaderboardList
@@ -55,7 +60,7 @@ struct LeaderboardView: View {
             }
             .navigationTitle("Leaderboard")
             .toolbar {
-                if !participants.isEmpty {
+                if !activeParticipants.isEmpty {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
                             showingStats = true

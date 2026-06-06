@@ -43,17 +43,22 @@ final class PhoneSyncManager: NSObject, ObservableObject {
 
     private func makeSnapshot() throws -> SyncSnapshot {
         let context = modelContainer.mainContext
-        let participants = try context.fetch(
-            FetchDescriptor<Participant>(sortBy: [SortDescriptor(\.createdAt)])
+        // Split fetch from filter (and use explicit keypath roots) so the Swift
+        // type-checker doesn't choke on the chained generic expression.
+        let fetchedParticipants = try context.fetch(
+            FetchDescriptor<Participant>(sortBy: [SortDescriptor(\Participant.createdAt)])
         )
-        let chores = try context.fetch(
-            FetchDescriptor<Chore>(sortBy: [SortDescriptor(\.sortOrder), SortDescriptor(\.createdAt)])
-        ).filter { !$0.isArchived }
+        let participants = fetchedParticipants.filter { !$0.isSoftDeleted }
+
+        let fetchedChores = try context.fetch(
+            FetchDescriptor<Chore>(sortBy: [SortDescriptor(\Chore.sortOrder), SortDescriptor(\Chore.createdAt)])
+        )
+        let chores = fetchedChores.filter { !$0.isArchived && !$0.isSoftDeleted }
 
         let startOfToday = DateUtils.startOfToday()
         let participantDTOs = participants.map { person in
             let todayPoints = person.completions.reduce(0) { sum, completion in
-                completion.completedAt >= startOfToday ? sum + completion.pointsAwarded : sum
+                (completion.completedAt >= startOfToday && !completion.isSoftDeleted) ? sum + completion.pointsAwarded : sum
             }
             return ParticipantDTO(
                 uuid: person.uuid, name: person.name, emoji: person.emoji,
@@ -79,6 +84,8 @@ final class PhoneSyncManager: NSObject, ObservableObject {
 
             let participant = try context.fetch(FetchDescriptor<Participant>())
                 .first { $0.uuid == dto.participantUUID }
+            // Don't create an owner-less or deleted-owner completion.
+            guard let participant, !participant.isSoftDeleted else { return }
             let chore = try context.fetch(FetchDescriptor<Chore>())
                 .first { $0.uuid == dto.choreUUID }
 

@@ -17,6 +17,11 @@ final class Participant {
     var colorHex: String = "#7C5CFF"
     var createdAt: Date = Date.now
 
+    // Sync metadata (CQ-12) — see SyncableModel.
+    var updatedAt: Date = Date.now
+    var deletedAt: Date?
+    var householdID: UUID?
+
     /// Deleting a participant removes their completion history (the leaderboard
     /// has no meaning for an owner-less completion). The UI confirms first.
     @Relationship(deleteRule: .cascade, inverse: \Completion.participant)
@@ -27,12 +32,27 @@ final class Participant {
         name: String,
         emoji: String = "🙂",
         colorHex: String = "#7C5CFF",
-        createdAt: Date = .now
+        createdAt: Date = .now,
+        updatedAt: Date = .now,
+        deletedAt: Date? = nil,
+        householdID: UUID? = nil
     ) {
         self.uuid = uuid
         self.name = name
         self.emoji = emoji
         self.colorHex = colorHex
         self.createdAt = createdAt
+        self.updatedAt = updatedAt
+        self.deletedAt = deletedAt
+        self.householdID = householdID
+    }
+
+    /// Soft-delete this participant and all of their completions (mirrors the old
+    /// cascade delete, but as soft deletes so it can propagate via sync).
+    func softDeleteCascading(_ date: Date = .now) {
+        for completion in completions { completion.softDelete(date) }
+        softDelete(date)
     }
 }
+
+extension Participant: SyncableModel {}

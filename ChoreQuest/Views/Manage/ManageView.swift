@@ -8,10 +8,13 @@ struct ManageView: View {
     @Environment(\.modelContext) private var context
 
     @Query(sort: \Participant.createdAt, order: .forward)
-    private var participants: [Participant]
+    private var allParticipants: [Participant]
 
     @Query(sort: [SortDescriptor(\Chore.sortOrder), SortDescriptor(\Chore.createdAt)])
-    private var chores: [Chore]
+    private var allChores: [Chore]
+
+    /// Live participants (excludes soft-deleted). View logic uses this.
+    private var participants: [Participant] { allParticipants.filter { !$0.isSoftDeleted } }
 
     @State private var showingNewParticipant = false
     @State private var editingParticipant: Participant?
@@ -29,14 +32,14 @@ struct ManageView: View {
     @State private var backupMessage: String?
     @State private var showingBackupMessage = false
 
-    private var activeChores: [Chore] { chores.filter { !$0.isArchived } }
-    private var archivedChores: [Chore] { chores.filter { $0.isArchived } }
+    private var activeChores: [Chore] { allChores.filter { !$0.isArchived && !$0.isSoftDeleted } }
+    private var archivedChores: [Chore] { allChores.filter { $0.isArchived && !$0.isSoftDeleted } }
 
     /// Places a new chore after the current highest order so it lands at the end
     /// of the grid (sortOrder is only meaningful among active chores — see
     /// `moveChores`).
     private var nextChoreSortOrder: Int {
-        (chores.map(\.sortOrder).max() ?? -1) + 1
+        (allChores.map(\.sortOrder).max() ?? -1) + 1
     }
 
     var body: some View {
@@ -315,22 +318,24 @@ struct ManageView: View {
         reordered.move(fromOffsets: offsets, toOffset: destination)
         for (index, chore) in reordered.enumerated() {
             chore.sortOrder = index
+            chore.touch()
         }
         context.saveChanges()
     }
 
     private func setArchived(_ chore: Chore, _ archived: Bool) {
         chore.isArchived = archived
+        chore.touch()
         context.saveChanges()
     }
 
     private func delete(_ chore: Chore) {
-        context.delete(chore)
+        chore.softDelete()
         context.saveChanges()
     }
 
     private func delete(_ person: Participant) {
-        context.delete(person)
+        person.softDeleteCascading()
         context.saveChanges()
         participantPendingDelete = nil
     }

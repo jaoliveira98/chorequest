@@ -50,9 +50,11 @@ enum Backup {
     // MARK: - Export
 
     static func export(from context: ModelContext) throws -> Data {
-        let participants = try context.fetch(FetchDescriptor<Participant>())
-        let chores = try context.fetch(FetchDescriptor<Chore>())
+        // Back up live data only — soft-deleted rows are tombstones, not content.
+        let participants = try context.fetch(FetchDescriptor<Participant>()).filter { !$0.isSoftDeleted }
+        let chores = try context.fetch(FetchDescriptor<Chore>()).filter { !$0.isSoftDeleted }
         let completions = try context.fetch(FetchDescriptor<Completion>())
+            .filter { !$0.isSoftDeleted && !($0.participant?.isSoftDeleted ?? false) }
 
         let file = File(
             version: version,
