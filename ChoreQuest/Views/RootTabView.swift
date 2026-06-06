@@ -32,4 +32,5 @@ struct RootTabView: View {
     return RootTabView()
         .modelContainer(container)
         .environmentObject(PhoneSyncManager(modelContainer: container))
+        .environmentObject(CloudSyncManager(container: container))
 }

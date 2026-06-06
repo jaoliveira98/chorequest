@@ -19,6 +19,7 @@
 		3AB7A3EE3A6C7F40574A5FA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3194198176B7610C6DB9653D /* Assets.xcassets */; };
 		423DA0E6AABEBAA738B22866 /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F365058738AD57AABBD88507 /* PressableButtonStyle.swift */; };
 		42E0AB05FF0B0C41BD3ED863 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA95FF6DEE00CAB23C40B8C /* ConfettiView.swift */; };
+		447AE38B5B9154CD407172A3 /* SupabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83110D7AE987C525B2C304D9 /* SupabaseClient.swift */; };
 		49F7FF287CCACB1D0AA63C1B /* Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DC9013041DDCE5D24B36F3 /* Backup.swift */; };
 		4B8950BADC248730D642FB9B /* ColorHexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA684CE855A731B2BD6A3BC8 /* ColorHexTests.swift */; };
 		511E71503ED2AB8A8ECFA1CC /* SyncableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF8C814B57757682E87EE04 /* SyncableModel.swift */; };
@@ -31,6 +32,7 @@
 		642BA6CADE4E2CA60F893576 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270F03A0151D134D4745D3A /* AvatarView.swift */; };
 		6650E280C087E717D99AC350 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE37F2A53BA6EF08B5457930 /* LeaderboardView.swift */; };
 		735944A84A637D6EE8AA40CB /* ManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A6E9D339F61A4FDB09057A /* ManageView.swift */; };
+		7C343EA3571AEE1D98EB9600 /* SyncModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105743D4C026C33F9BD99BCA /* SyncModels.swift */; };
 		826EFA347464BD15DDF44E20 /* Completion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88ECC0400BBDD66EF64BCDA /* Completion.swift */; };
 		861A18BDB6A2DF602C449452 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F21E41AE921951353BFF4 /* HistoryView.swift */; };
 		8A03C216920E3BDBABA6AA38 /* ChoreEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3DC4BE3C361539ED79B7E /* ChoreEditor.swift */; };
@@ -38,10 +40,13 @@
 		8F544DABFF84140A59AB591F /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4836F69535BC1F635A582CDE /* Palette.swift */; };
 		913A2427A581395DC12F4BAC /* EmojiPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63A9A24C5AE11B3FC2F15F /* EmojiPicker.swift */; };
 		9C7821C47695FBB8DD7066B7 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF814F6FCA440A9722B8D7A3 /* StatsView.swift */; };
+		A6BAF7E46CEF8397D3DDA2CD /* SupabaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C200D7B14B224D19855EEEEA /* SupabaseConfig.swift */; };
 		AB0D1FBFC3016C052E5B0D01 /* WatchLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD56A03980FDD8E208E4A94 /* WatchLogView.swift */; };
 		ACAE40B7028EC91468ED584C /* QuickLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FEA9E898B986DBDC9A1F8 /* QuickLogView.swift */; };
 		AD06BFDF13D25567F5747A36 /* ParticipantChips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AA158D8B381D1EFF6C157B /* ParticipantChips.swift */; };
 		AF8CEE4A1C22B60728491E77 /* WatchSyncDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F0AEDEC6D5A4713BC42462 /* WatchSyncDTOs.swift */; };
+		B536516A5AED3E438B3620BC /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDADC2658EFBAEB10F8BD69 /* Keychain.swift */; };
+		B628B415EDDF7662D5EA6F3F /* CloudSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EDB58C2BE4B4868AAF045 /* CloudSyncManager.swift */; };
 		B69C0E5DB3EFA3E51E85BDA8 /* DateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A4ED504558241EBF3D4093 /* DateUtilsTests.swift */; };
 		B7715360F1814D3B6B37E760 /* Seeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE700305EE718ED1A656667 /* Seeder.swift */; };
 		B9295DA9817D4C5E02DE9C00 /* ColorSwatchPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1D10DE4D083F7F6887134 /* ColorSwatchPicker.swift */; };
@@ -94,6 +99,7 @@
 		02E7285C9A80EBE38A60B58F /* LeaderboardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardRow.swift; sourceTree = "<group>"; };
 		0B4C0E36DF95B80E7C5BB886 /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
 		0DED25671E0FDD06E14B1DE9 /* PhoneSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneSyncManager.swift; sourceTree = "<group>"; };
+		105743D4C026C33F9BD99BCA /* SyncModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncModels.swift; sourceTree = "<group>"; };
 		20DC9013041DDCE5D24B36F3 /* Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backup.swift; sourceTree = "<group>"; };
 		25A4ED504558241EBF3D4093 /* DateUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtilsTests.swift; sourceTree = "<group>"; };
 		2DD8E539D7201ABADFA2B908 /* ChoreQuestWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreQuestWatchApp.swift; sourceTree = "<group>"; };
@@ -110,10 +116,12 @@
 		71A6E9D339F61A4FDB09057A /* ManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageView.swift; sourceTree = "<group>"; };
 		71E17422B7E224843E177D01 /* WatchSyncPayloads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncPayloads.swift; sourceTree = "<group>"; };
 		7CF8C814B57757682E87EE04 /* SyncableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncableModel.swift; sourceTree = "<group>"; };
+		83110D7AE987C525B2C304D9 /* SupabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseClient.swift; sourceTree = "<group>"; };
 		86C3DC4BE3C361539ED79B7E /* ChoreEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreEditor.swift; sourceTree = "<group>"; };
 		878AA7D100D644B3E54FEC70 /* ChoreTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreTile.swift; sourceTree = "<group>"; };
 		8CACC0DE355372D754C59053 /* ChoreQuest.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ChoreQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F9FB7B16DD1E3A9B4CD4050 /* Chore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chore.swift; sourceTree = "<group>"; };
+		909EDB58C2BE4B4868AAF045 /* CloudSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSyncManager.swift; sourceTree = "<group>"; };
 		A0A5E004476357F41137E609 /* WatchSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncManager.swift; sourceTree = "<group>"; };
 		A15F02DD2D84C33B8A855E25 /* ChoreQuestWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoreQuestWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A24146AD83A844DCCF236D19 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
@@ -121,6 +129,7 @@
 		AE37F2A53BA6EF08B5457930 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		AF3C3895E56CDC05A167F9FF /* CompletionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionRow.swift; sourceTree = "<group>"; };
 		BF63A9A24C5AE11B3FC2F15F /* EmojiPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPicker.swift; sourceTree = "<group>"; };
+		C200D7B14B224D19855EEEEA /* SupabaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseConfig.swift; sourceTree = "<group>"; };
 		C4B5676C0E61F1F4BD36C9B1 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		CCA95FF6DEE00CAB23C40B8C /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
 		D270F03A0151D134D4745D3A /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
@@ -134,6 +143,7 @@
 		F88ECC0400BBDD66EF64BCDA /* Completion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Completion.swift; sourceTree = "<group>"; };
 		FA684CE855A731B2BD6A3BC8 /* ColorHexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHexTests.swift; sourceTree = "<group>"; };
 		FBD1D10DE4D083F7F6887134 /* ColorSwatchPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwatchPicker.swift; sourceTree = "<group>"; };
+		FCDADC2658EFBAEB10F8BD69 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		FE49016FC47923DB4B438DF2 /* WatchSyncWireTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncWireTests.swift; sourceTree = "<group>"; };
 		FF814F6FCA440A9722B8D7A3 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		FFE700305EE718ED1A656667 /* Seeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seeder.swift; sourceTree = "<group>"; };
@@ -296,7 +306,12 @@
 		DC110CAFB6218F34EEB272DA /* Sync */ = {
 			isa = PBXGroup;
 			children = (
+				909EDB58C2BE4B4868AAF045 /* CloudSyncManager.swift */,
+				FCDADC2658EFBAEB10F8BD69 /* Keychain.swift */,
 				0DED25671E0FDD06E14B1DE9 /* PhoneSyncManager.swift */,
+				83110D7AE987C525B2C304D9 /* SupabaseClient.swift */,
+				C200D7B14B224D19855EEEEA /* SupabaseConfig.swift */,
+				105743D4C026C33F9BD99BCA /* SyncModels.swift */,
 			);
 			path = Sync;
 			sourceTree = "<group>";
@@ -479,6 +494,7 @@
 				8A03C216920E3BDBABA6AA38 /* ChoreEditor.swift in Sources */,
 				E4EFFFB373103D8A16E73261 /* ChoreQuestApp.swift in Sources */,
 				146AD06CE72D90952F5E191B /* ChoreTile.swift in Sources */,
+				B628B415EDDF7662D5EA6F3F /* CloudSyncManager.swift in Sources */,
 				5315CF1EF3655BCBF3893446 /* Color+Hex.swift in Sources */,
 				B9295DA9817D4C5E02DE9C00 /* ColorSwatchPicker.swift in Sources */,
 				826EFA347464BD15DDF44E20 /* Completion.swift in Sources */,
@@ -488,6 +504,7 @@
 				913A2427A581395DC12F4BAC /* EmojiPicker.swift in Sources */,
 				E66B80402195D726BC46C2FD /* Haptics.swift in Sources */,
 				861A18BDB6A2DF602C449452 /* HistoryView.swift in Sources */,
+				B536516A5AED3E438B3620BC /* Keychain.swift in Sources */,
 				55CB3FD06604E4809757F33D /* LeaderboardRow.swift in Sources */,
 				6650E280C087E717D99AC350 /* LeaderboardView.swift in Sources */,
 				735944A84A637D6EE8AA40CB /* ManageView.swift in Sources */,
@@ -503,6 +520,9 @@
 				324C2AC96BAB3F5F0ED8D035 /* RootTabView.swift in Sources */,
 				B7715360F1814D3B6B37E760 /* Seeder.swift in Sources */,
 				9C7821C47695FBB8DD7066B7 /* StatsView.swift in Sources */,
+				447AE38B5B9154CD407172A3 /* SupabaseClient.swift in Sources */,
+				A6BAF7E46CEF8397D3DDA2CD /* SupabaseConfig.swift in Sources */,
+				7C343EA3571AEE1D98EB9600 /* SyncModels.swift in Sources */,
 				511E71503ED2AB8A8ECFA1CC /* SyncableModel.swift in Sources */,
 				143795670435925C18AA216D /* TimeRange.swift in Sources */,
 				8BD0D5C493855CE98DED53EC /* WatchSyncDTOs.swift in Sources */,

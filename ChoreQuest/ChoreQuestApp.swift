@@ -3,37 +3,44 @@ import SwiftData
 
 /// App entry point.
 ///
-/// Owns the SwiftData `ModelContainer` (the on-device store), seeds default
-/// chores on first launch, and owns the `PhoneSyncManager` that mirrors data to
-/// (and receives logs from) a paired Apple Watch. All data stays local; the
-/// phone is the source of truth.
+/// Owns the SwiftData `ModelContainer` (local source of truth), seeds default
+/// chores on first launch, and owns the sync managers: `PhoneSyncManager` (Apple
+/// Watch) and `CloudSyncManager` (cross-phone sync via Supabase). Both run on
+/// foreground; the app keeps working offline regardless.
 @main
 struct ChoreQuestApp: App {
     let container: ModelContainer
-    @StateObject private var sync: PhoneSyncManager
+    @StateObject private var watchSync: PhoneSyncManager
+    @StateObject private var cloudSync: CloudSyncManager
     @Environment(\.scenePhase) private var scenePhase
 
     init() {
         let container: ModelContainer
         do {
-            container = try ModelContainer(
-                for: Participant.self, Chore.self, Completion.self
-            )
+            container = try ModelContainer(for: Participant.self, Chore.self, Completion.self)
         } catch {
             fatalError("Failed to create the ChoreQuest data store: \(error)")
         }
         self.container = container
         Seeder.seedIfNeeded(context: container.mainContext)
-        _sync = StateObject(wrappedValue: PhoneSyncManager(modelContainer: container))
+        _watchSync = StateObject(wrappedValue: PhoneSyncManager(modelContainer: container))
+        _cloudSync = StateObject(wrappedValue: CloudSyncManager(container: container))
     }
 
     var body: some Scene {
         WindowGroup {
             RootTabView()
-                .environmentObject(sync)
-                .task { sync.activate() }
+                .environmentObject(watchSync)
+                .environmentObject(cloudSync)
+                .task {
+                    watchSync.activate()
+                    await cloudSync.sync()
+                }
                 .onChange(of: scenePhase) { _, phase in
-                    if phase == .active { sync.pushSnapshot() }
+                    if phase == .active {
+                        watchSync.pushSnapshot()
+                        Task { await cloudSync.sync() }
+                    }
                 }
         }
         .modelContainer(container)
