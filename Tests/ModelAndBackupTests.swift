@@ -124,4 +124,28 @@ final class ModelAndBackupTests: XCTestCase {
         Seeder.seedIfNeeded(context: context, defaults: defaults)
         XCTAssertEqual(try context.fetchCount(FetchDescriptor<Chore>()), seededCount)
     }
+
+    func testResetChoresReplacesWithDefaultsAndKeepsHistory() throws {
+        let context = try makeContext()
+        let person = Participant(name: "Alex")
+        let custom = Chore(name: "Custom chore", points: 9)
+        context.insert(person)
+        context.insert(custom)
+        context.insert(Completion(chore: custom, participant: person))
+        try context.save()
+
+        Seeder.resetChores(context: context)
+
+        let chores = try context.fetch(FetchDescriptor<Chore>())
+        XCTAssertEqual(chores.count, Seeder.defaultChores.count)
+        XCTAssertFalse(chores.contains { $0.name == "Custom chore" })
+        XCTAssertTrue(chores.contains { $0.name == "Dog pad" })
+
+        // The logged completion survives via its snapshot; the chore link nullifies.
+        let completions = try context.fetch(FetchDescriptor<Completion>())
+        XCTAssertEqual(completions.count, 1)
+        XCTAssertNil(completions.first?.chore)
+        XCTAssertEqual(completions.first?.choreName, "Custom chore")
+        XCTAssertEqual(completions.first?.pointsAwarded, 9)
+    }
 }
