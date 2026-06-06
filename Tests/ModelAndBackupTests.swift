@@ -136,16 +136,62 @@ final class ModelAndBackupTests: XCTestCase {
 
         Seeder.resetChores(context: context)
 
-        let chores = try context.fetch(FetchDescriptor<Chore>())
-        XCTAssertEqual(chores.count, Seeder.defaultChores.count)
-        XCTAssertFalse(chores.contains { $0.name == "Custom chore" })
-        XCTAssertTrue(chores.contains { $0.name == "Dog pad" })
+        // Reset soft-deletes the old chores (kept as tombstones) and inserts defaults.
+        let activeChores = try context.fetch(FetchDescriptor<Chore>()).filter { !$0.isSoftDeleted }
+        XCTAssertEqual(activeChores.count, Seeder.defaultChores.count)
+        XCTAssertFalse(activeChores.contains { $0.name == "Custom chore" })
+        XCTAssertTrue(activeChores.contains { $0.name == "Dog pad" })
+        XCTAssertTrue(custom.isSoftDeleted) // the old custom chore is soft-deleted
 
-        // The logged completion survives via its snapshot; the chore link nullifies.
+        // The logged completion survives via its snapshot.
         let completions = try context.fetch(FetchDescriptor<Completion>())
         XCTAssertEqual(completions.count, 1)
-        XCTAssertNil(completions.first?.chore)
         XCTAssertEqual(completions.first?.choreName, "Custom chore")
         XCTAssertEqual(completions.first?.pointsAwarded, 9)
+    }
+
+    // MARK: - Soft delete / sync metadata (CQ-12)
+
+    func testSoftDeleteHidesRowAndStampsTimestamps() throws {
+        let context = try makeContext()
+        let chore = Chore(name: "Dishes", points: 2)
+        context.insert(chore)
+        try context.save()
+
+        XCTAssertFalse(chore.isSoftDeleted)
+        let before = chore.updatedAt
+        chore.softDelete()
+
+        XCTAssertTrue(chore.isSoftDeleted)
+        XCTAssertNotNil(chore.deletedAt)
+        XCTAssertGreaterThanOrEqual(chore.updatedAt, before)
+    }
+
+    func testParticipantSoftDeleteCascadesToCompletions() throws {
+        let context = try makeContext()
+        let person = Participant(name: "Alex")
+        let chore = Chore(name: "Dishes", points: 2)
+        context.insert(person)
+        context.insert(chore)
+        let completion = Completion(chore: chore, participant: person)
+        context.insert(completion)
+        try context.save()
+
+        person.softDeleteCascading()
+
+        XCTAssertTrue(person.isSoftDeleted)
+        XCTAssertTrue(completion.isSoftDeleted) // the person's completion is hidden too
+        XCTAssertFalse(chore.isSoftDeleted)     // the chore itself is untouched
+    }
+
+    func testTouchAdvancesUpdatedAt() throws {
+        let context = try makeContext()
+        let chore = Chore(name: "Dishes", points: 2, updatedAt: Date(timeIntervalSince1970: 0))
+        context.insert(chore)
+        try context.save()
+
+        let later = Date(timeIntervalSince1970: 1_000)
+        chore.touch(later)
+        XCTAssertEqual(chore.updatedAt, later)
     }
 }

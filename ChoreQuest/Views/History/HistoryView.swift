@@ -15,9 +15,17 @@ struct HistoryView: View {
 
     @State private var filter: Participant?
 
+    private var visibleCompletions: [Completion] {
+        completions.filter { !$0.isSoftDeleted }
+    }
+
+    private var activeParticipants: [Participant] {
+        participants.filter { !$0.isSoftDeleted }
+    }
+
     private var filtered: [Completion] {
-        guard let filter else { return completions }
-        return completions.filter {
+        guard let filter else { return visibleCompletions }
+        return visibleCompletions.filter {
             $0.participant?.persistentModelID == filter.persistentModelID
         }
     }
@@ -38,12 +46,12 @@ struct HistoryView: View {
     var body: some View {
         NavigationStack {
             Group {
-                if completions.isEmpty {
+                if visibleCompletions.isEmpty {
                     emptyState
                 } else {
                     VStack(spacing: 0) {
                         ParticipantChips(
-                            participants: participants,
+                            participants: activeParticipants,
                             selection: $filter,
                             includeAllOption: true
                         )
@@ -94,7 +102,7 @@ struct HistoryView: View {
     }
 
     private func delete(_ completion: Completion) {
-        context.delete(completion)
+        completion.softDelete()
         context.saveChanges()
     }
 }

@@ -21,6 +21,7 @@
 		42E0AB05FF0B0C41BD3ED863 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA95FF6DEE00CAB23C40B8C /* ConfettiView.swift */; };
 		49F7FF287CCACB1D0AA63C1B /* Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DC9013041DDCE5D24B36F3 /* Backup.swift */; };
 		4B8950BADC248730D642FB9B /* ColorHexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA684CE855A731B2BD6A3BC8 /* ColorHexTests.swift */; };
+		511E71503ED2AB8A8ECFA1CC /* SyncableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF8C814B57757682E87EE04 /* SyncableModel.swift */; };
 		5315CF1EF3655BCBF3893446 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EFD418CEB760447935F4D2 /* Color+Hex.swift */; };
 		547F7B240B885A2291C5033C /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270F03A0151D134D4745D3A /* AvatarView.swift */; };
 		55CB3FD06604E4809757F33D /* LeaderboardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7285C9A80EBE38A60B58F /* LeaderboardRow.swift */; };
@@ -108,6 +109,7 @@
 		6FEE234695F03FEF37089117 /* RewardPingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardPingView.swift; sourceTree = "<group>"; };
 		71A6E9D339F61A4FDB09057A /* ManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageView.swift; sourceTree = "<group>"; };
 		71E17422B7E224843E177D01 /* WatchSyncPayloads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncPayloads.swift; sourceTree = "<group>"; };
+		7CF8C814B57757682E87EE04 /* SyncableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncableModel.swift; sourceTree = "<group>"; };
 		86C3DC4BE3C361539ED79B7E /* ChoreEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreEditor.swift; sourceTree = "<group>"; };
 		878AA7D100D644B3E54FEC70 /* ChoreTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreTile.swift; sourceTree = "<group>"; };
 		8CACC0DE355372D754C59053 /* ChoreQuest.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ChoreQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,6 +244,7 @@
 				8F9FB7B16DD1E3A9B4CD4050 /* Chore.swift */,
 				F88ECC0400BBDD66EF64BCDA /* Completion.swift */,
 				029F908D4A5D6373E3E2FBF1 /* Participant.swift */,
+				7CF8C814B57757682E87EE04 /* SyncableModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 				324C2AC96BAB3F5F0ED8D035 /* RootTabView.swift in Sources */,
 				B7715360F1814D3B6B37E760 /* Seeder.swift in Sources */,
 				9C7821C47695FBB8DD7066B7 /* StatsView.swift in Sources */,
+				511E71503ED2AB8A8ECFA1CC /* SyncableModel.swift in Sources */,
 				143795670435925C18AA216D /* TimeRange.swift in Sources */,
 				8BD0D5C493855CE98DED53EC /* WatchSyncDTOs.swift in Sources */,
 				621BACB3D3B9240CD7B4140C /* WatchSyncPayloads.swift in Sources */,

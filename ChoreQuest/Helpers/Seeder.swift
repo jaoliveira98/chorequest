@@ -57,8 +57,10 @@ enum Seeder {
     /// applied to an already-seeded install without reinstalling.
     static func resetChores(context: ModelContext) {
         do {
-            for chore in try context.fetch(FetchDescriptor<Chore>()) {
-                context.delete(chore)
+            // Soft-delete existing chores (so the removal propagates via sync)
+            // and skip ones already gone.
+            for chore in try context.fetch(FetchDescriptor<Chore>()) where !chore.isSoftDeleted {
+                chore.softDelete()
             }
             insertDefaultChores(into: context)
             try context.save()

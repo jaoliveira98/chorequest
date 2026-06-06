@@ -104,6 +104,7 @@ struct ChoreEditor: View {
             chore.points = points
             chore.colorHex = colorHex
             chore.isArchived = isArchived
+            chore.touch()
         } else {
             context.insert(
                 Chore(

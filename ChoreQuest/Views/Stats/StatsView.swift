@@ -6,7 +6,10 @@ import Charts
 /// last 7 or 30 days.
 struct StatsView: View {
     @Query(sort: \Participant.createdAt, order: .forward)
-    private var participants: [Participant]
+    private var allParticipants: [Participant]
+
+    /// Live participants (excludes soft-deleted).
+    private var participants: [Participant] { allParticipants.filter { !$0.isSoftDeleted } }
 
     @State private var windowDays = 7
 
@@ -36,7 +39,7 @@ struct StatsView: View {
         participants
             .map { person in
                 let points = person.completions
-                    .filter { $0.completedAt >= windowStart }
+                    .filter { $0.completedAt >= windowStart && !$0.isSoftDeleted }
                     .reduce(0) { $0 + $1.pointsAwarded }
                 return Total(id: person.persistentModelID, name: person.name,
                              color: Color(hex: person.colorHex), points: points)
@@ -49,7 +52,7 @@ struct StatsView: View {
         let calendar = Calendar.current
         var rows: [DailyPoints] = []
         for person in participants {
-            let byDay = Dictionary(grouping: person.completions.filter { $0.completedAt >= windowStart }) {
+            let byDay = Dictionary(grouping: person.completions.filter { $0.completedAt >= windowStart && !$0.isSoftDeleted }) {
                 DateUtils.startOfDay($0.completedAt)
             }
             for offset in 0..<windowDays {
