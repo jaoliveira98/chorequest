@@ -15,12 +15,13 @@ actor SupabaseClient {
     }
 
     enum SupabaseError: LocalizedError {
-        case http(Int, String)
+        case http(Int, String) // status, raw body (kept for logs, not shown to users)
         case noData
+        /// User-facing text — deliberately generic (the raw body is only logged).
         var errorDescription: String? {
             switch self {
-            case .http(let code, let msg): return "Supabase \(code): \(msg)"
-            case .noData: return "No data from Supabase"
+            case .http(let code, _): return "Sync failed (\(code)). Please try again."
+            case .noData: return "Sync failed: no response."
             }
         }
     }
@@ -125,7 +126,9 @@ actor SupabaseClient {
         let (data, response) = try await URLSession.shared.data(for: request)
         guard let http = response as? HTTPURLResponse else { throw SupabaseError.noData }
         guard (200..<300).contains(http.statusCode) else {
-            throw SupabaseError.http(http.statusCode, String(data: data, encoding: .utf8) ?? "")
+            let body = String(data: data, encoding: .utf8) ?? ""
+            print("ChoreQuest: Supabase \(http.statusCode) for \(request.url?.path ?? "?") — \(body)")
+            throw SupabaseError.http(http.statusCode, body)
         }
         return data
     }

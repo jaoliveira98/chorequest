@@ -20,6 +20,7 @@
 		423DA0E6AABEBAA738B22866 /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F365058738AD57AABBD88507 /* PressableButtonStyle.swift */; };
 		42E0AB05FF0B0C41BD3ED863 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA95FF6DEE00CAB23C40B8C /* ConfettiView.swift */; };
 		447AE38B5B9154CD407172A3 /* SupabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83110D7AE987C525B2C304D9 /* SupabaseClient.swift */; };
+		45D5AB5032AF74F61A27E265 /* CloudSyncMergeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2507A8DE6065B99C93B5B4 /* CloudSyncMergeTests.swift */; };
 		49F7FF287CCACB1D0AA63C1B /* Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DC9013041DDCE5D24B36F3 /* Backup.swift */; };
 		4B8950BADC248730D642FB9B /* ColorHexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA684CE855A731B2BD6A3BC8 /* ColorHexTests.swift */; };
 		511E71503ED2AB8A8ECFA1CC /* SyncableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF8C814B57757682E87EE04 /* SyncableModel.swift */; };
@@ -122,6 +123,7 @@
 		8CACC0DE355372D754C59053 /* ChoreQuest.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ChoreQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F9FB7B16DD1E3A9B4CD4050 /* Chore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chore.swift; sourceTree = "<group>"; };
 		909EDB58C2BE4B4868AAF045 /* CloudSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSyncManager.swift; sourceTree = "<group>"; };
+		9E2507A8DE6065B99C93B5B4 /* CloudSyncMergeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSyncMergeTests.swift; sourceTree = "<group>"; };
 		A0A5E004476357F41137E609 /* WatchSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncManager.swift; sourceTree = "<group>"; };
 		A15F02DD2D84C33B8A855E25 /* ChoreQuestWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoreQuestWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A24146AD83A844DCCF236D19 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 		481B61DB693814BC1FD0FF36 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				9E2507A8DE6065B99C93B5B4 /* CloudSyncMergeTests.swift */,
 				FA684CE855A731B2BD6A3BC8 /* ColorHexTests.swift */,
 				25A4ED504558241EBF3D4093 /* DateUtilsTests.swift */,
 				40A78283EDDC843678A6BB70 /* ModelAndBackupTests.swift */,
@@ -548,6 +551,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45D5AB5032AF74F61A27E265 /* CloudSyncMergeTests.swift in Sources */,
 				4B8950BADC248730D642FB9B /* ColorHexTests.swift in Sources */,
 				B69C0E5DB3EFA3E51E85BDA8 /* DateUtilsTests.swift in Sources */,
 				1759F3E7EE798B1D8258EBA6 /* ModelAndBackupTests.swift in Sources */,

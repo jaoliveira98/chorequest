@@ -43,36 +43,46 @@ final class CloudSyncManager: ObservableObject {
 
     // MARK: - Household create / join / leave
 
+    /// This phone's current data becomes the shared data: pushAll adopts every
+    /// local row (stamps householdID) and uploads it.
     func createHousehold() async {
+        guard householdID == nil else { return }
         await run {
             let row = try await self.client.householdRPC("create_household")
             self.setHousehold(id: row.id, code: row.inviteCode, resetCursors: true)
-            // This phone's current data becomes the shared data.
-            self.stampAllLocalRows(with: row.id)
-            self.context.saveChanges()
             try await self.pushAll(householdID: row.id)
             try await self.pull(householdID: row.id)
         }
     }
 
     /// Joining adopts the household's data: this phone's pre-join local data is
-    /// replaced by what the household already has.
+    /// replaced by what the household already has. We pull FIRST and only delete
+    /// the pre-join rows once the pull succeeds (run() rolls back on failure), so
+    /// a mid-join network error can't leave the phone wiped-but-empty.
     func joinHousehold(code: String) async {
+        guard householdID == nil else { return }
         await run {
             let row = try await self.client.householdRPC("join_household", args: ["code": code])
-            self.wipeLocalData()
+            self.resetCursors()
+            try await self.pull(householdID: row.id)        // brings the household's rows in
+            self.deleteRows(notInHousehold: row.id)         // drop this phone's pre-join rows
+            self.setHousehold(id: row.id, code: row.inviteCode, resetCursors: false)
             self.context.saveChanges()
-            self.setHousehold(id: row.id, code: row.inviteCode, resetCursors: true)
-            try await self.pull(householdID: row.id) // full pull (cursors reset)
         }
     }
 
+    /// Stop syncing (keeps local data). Single-flighted so it can't interleave
+    /// with an in-flight sync and tear down the session mid-request.
     func leaveHousehold() async {
+        guard !isSyncing else { return }
+        isSyncing = true
+        defer { isSyncing = false }
         householdID = nil
         defaults.removeObject(forKey: kInviteCode)
         defaults.removeObject(forKey: kEnsuredUser)
-        for table in ["participants", "chores", "completions"] { defaults.removeObject(forKey: kCursor(table)) }
+        resetCursors()
         householdCode = nil
+        lastSyncedAt = nil
         await client.signOut()
         status = .idle
         errorMessage = nil
@@ -103,6 +113,9 @@ final class CloudSyncManager: ObservableObject {
             errorMessage = nil
             status = .idle
         } catch {
+            // Discard any partial, unsaved changes so a failed sync/join leaves
+            // the local store consistent.
+            context.rollback()
             errorMessage = error.localizedDescription
             status = .error
         }
@@ -113,7 +126,7 @@ final class CloudSyncManager: ObservableObject {
     /// stored household, re-join by the saved code. Idempotent and self-healing.
     private func ensureMembership() async throws {
         guard let code = defaults.string(forKey: kInviteCode) else { return }
-        let userID = await client.currentUserId?.uuidString
+        guard let userID = await client.currentUserId?.uuidString else { return }
         guard userID != defaults.string(forKey: kEnsuredUser) else { return }
         let row = try await client.householdRPC("join_household", args: ["code": code])
         householdID = row.id
@@ -123,6 +136,12 @@ final class CloudSyncManager: ObservableObject {
     // MARK: - Push (all household rows; idempotent upserts)
 
     private func pushAll(householdID hid: UUID) async throws {
+        // Adopt any locally-created rows (householdID == nil) into the active
+        // household so things added after linking actually sync. (Pulled rows
+        // already carry a householdID.)
+        adoptUnassignedRows(into: hid)
+        context.saveChanges()
+
         let participants = try context.fetch(FetchDescriptor<Participant>())
             .filter { $0.householdID == hid }
             .map { RemoteParticipant(uuid: $0.uuid, householdId: hid, name: $0.name, emoji: $0.emoji,
@@ -200,7 +219,7 @@ final class CloudSyncManager: ObservableObject {
         (try? context.fetch(FetchDescriptor<T>()))?.first { uuidKeyPath($0) == uuid }
     }
 
-    private func mergeParticipant(_ row: RemoteParticipant) {
+    func mergeParticipant(_ row: RemoteParticipant) {
         if let local = existing(Participant.self, uuidKeyPath: { $0.uuid }, uuid: row.uuid) {
             guard row.updatedAt > local.updatedAt else { return }
             local.name = row.name; local.emoji = row.emoji; local.colorHex = row.colorHex
@@ -213,7 +232,7 @@ final class CloudSyncManager: ObservableObject {
         }
     }
 
-    private func mergeChore(_ row: RemoteChore) {
+    func mergeChore(_ row: RemoteChore) {
         if let local = existing(Chore.self, uuidKeyPath: { $0.uuid }, uuid: row.uuid) {
             guard row.updatedAt > local.updatedAt else { return }
             local.name = row.name; local.emoji = row.emoji; local.points = row.points
@@ -227,7 +246,7 @@ final class CloudSyncManager: ObservableObject {
         }
     }
 
-    private func mergeCompletion(_ row: RemoteCompletion,
+    func mergeCompletion(_ row: RemoteCompletion,
                                  participants: [UUID: Participant],
                                  chores: [UUID: Chore]) {
         let participant = row.participantUuid.flatMap { participants[$0] }
@@ -249,25 +268,31 @@ final class CloudSyncManager: ObservableObject {
 
     // MARK: - Local data helpers
 
-    private func setHousehold(id: UUID, code: String, resetCursors: Bool) {
+    private func setHousehold(id: UUID, code: String, resetCursors clear: Bool) {
         householdID = id
         defaults.set(code, forKey: kInviteCode)
         householdCode = code
-        if resetCursors {
-            for table in ["participants", "chores", "completions"] { defaults.removeObject(forKey: kCursor(table)) }
-        }
+        if clear { resetCursors() }
     }
 
-    private func stampAllLocalRows(with hid: UUID) {
+    private func resetCursors() {
+        for table in ["participants", "chores", "completions"] { defaults.removeObject(forKey: kCursor(table)) }
+    }
+
+    /// Adopt locally-created rows (householdID == nil) into the active household
+    /// so additions made after linking get pushed.
+    private func adoptUnassignedRows(into hid: UUID) {
         let now = Date.now
-        for p in (try? context.fetch(FetchDescriptor<Participant>())) ?? [] { p.householdID = hid; p.touch(now) }
-        for c in (try? context.fetch(FetchDescriptor<Chore>())) ?? [] { c.householdID = hid; c.touch(now) }
-        for x in (try? context.fetch(FetchDescriptor<Completion>())) ?? [] { x.householdID = hid; x.touch(now) }
+        for p in (try? context.fetch(FetchDescriptor<Participant>())) ?? [] where p.householdID == nil { p.householdID = hid; p.touch(now) }
+        for c in (try? context.fetch(FetchDescriptor<Chore>())) ?? [] where c.householdID == nil { c.householdID = hid; c.touch(now) }
+        for x in (try? context.fetch(FetchDescriptor<Completion>())) ?? [] where x.householdID == nil { x.householdID = hid; x.touch(now) }
     }
 
-    private func wipeLocalData() {
-        for x in (try? context.fetch(FetchDescriptor<Completion>())) ?? [] { context.delete(x) }
-        for c in (try? context.fetch(FetchDescriptor<Chore>())) ?? [] { context.delete(c) }
-        for p in (try? context.fetch(FetchDescriptor<Participant>())) ?? [] { context.delete(p) }
+    /// Hard-delete rows that don't belong to the given household (used by join to
+    /// drop this phone's pre-join data after the household's data has been pulled).
+    private func deleteRows(notInHousehold hid: UUID) {
+        for x in (try? context.fetch(FetchDescriptor<Completion>())) ?? [] where x.householdID != hid { context.delete(x) }
+        for c in (try? context.fetch(FetchDescriptor<Chore>())) ?? [] where c.householdID != hid { context.delete(c) }
+        for p in (try? context.fetch(FetchDescriptor<Participant>())) ?? [] where p.householdID != hid { context.delete(p) }
     }
 }
