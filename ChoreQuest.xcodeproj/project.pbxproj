@@ -52,6 +52,7 @@
 		B7715360F1814D3B6B37E760 /* Seeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE700305EE718ED1A656667 /* Seeder.swift */; };
 		B9295DA9817D4C5E02DE9C00 /* ColorSwatchPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1D10DE4D083F7F6887134 /* ColorSwatchPicker.swift */; };
 		BABB4BFEFB4E84DDDCDE9B29 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24146AD83A844DCCF236D19 /* Date+Extensions.swift */; };
+		C527116DD415C8E0589FB329 /* SyncEncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81300E2182EC18B709FFCE79 /* SyncEncodingTests.swift */; };
 		C947BE81C1201AC1027B0DCE /* BackupDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE99BAD07347A2C308866E /* BackupDocument.swift */; };
 		CEBE641754B5BEC812C68217 /* WatchSyncPayloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E17422B7E224843E177D01 /* WatchSyncPayloads.swift */; };
 		DCF7FBB23F27B6E3A5F1B4C8 /* WatchSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A5E004476357F41137E609 /* WatchSyncManager.swift */; };
@@ -117,6 +118,7 @@
 		71A6E9D339F61A4FDB09057A /* ManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageView.swift; sourceTree = "<group>"; };
 		71E17422B7E224843E177D01 /* WatchSyncPayloads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncPayloads.swift; sourceTree = "<group>"; };
 		7CF8C814B57757682E87EE04 /* SyncableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncableModel.swift; sourceTree = "<group>"; };
+		81300E2182EC18B709FFCE79 /* SyncEncodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncEncodingTests.swift; sourceTree = "<group>"; };
 		83110D7AE987C525B2C304D9 /* SupabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseClient.swift; sourceTree = "<group>"; };
 		86C3DC4BE3C361539ED79B7E /* ChoreEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreEditor.swift; sourceTree = "<group>"; };
 		878AA7D100D644B3E54FEC70 /* ChoreTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreTile.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				FA684CE855A731B2BD6A3BC8 /* ColorHexTests.swift */,
 				25A4ED504558241EBF3D4093 /* DateUtilsTests.swift */,
 				40A78283EDDC843678A6BB70 /* ModelAndBackupTests.swift */,
+				81300E2182EC18B709FFCE79 /* SyncEncodingTests.swift */,
 				FE49016FC47923DB4B438DF2 /* WatchSyncWireTests.swift */,
 			);
 			path = Tests;
@@ -555,6 +558,7 @@
 				4B8950BADC248730D642FB9B /* ColorHexTests.swift in Sources */,
 				B69C0E5DB3EFA3E51E85BDA8 /* DateUtilsTests.swift in Sources */,
 				1759F3E7EE798B1D8258EBA6 /* ModelAndBackupTests.swift in Sources */,
+				C527116DD415C8E0589FB329 /* SyncEncodingTests.swift in Sources */,
 				E48D0B5700505037B609B8B1 /* WatchSyncWireTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

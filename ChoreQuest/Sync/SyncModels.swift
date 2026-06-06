@@ -57,9 +57,23 @@ enum SupabaseCoding {
     }
 }
 
+private extension KeyedEncodingContainer {
+    /// Always writes the key, encoding `nil` as an explicit JSON `null` rather
+    /// than omitting it. PostgREST bulk upsert rejects a batch whose objects have
+    /// different key sets (PGRST102 "All object keys must match"), which happens
+    /// the moment one row has a non-nil optional (e.g. `deleted_at` after a
+    /// delete) while others don't. Emitting every column on every row keeps the
+    /// key set uniform.
+    mutating func encodeAlways<T: Encodable>(_ value: T?, forKey key: Key) throws {
+        if let value { try encode(value, forKey: key) } else { try encodeNil(forKey: key) }
+    }
+}
+
 // MARK: - Row DTOs (snake_case columns via the encoder strategy)
 // Property names avoid all-caps acronyms so .convertToSnakeCase maps cleanly
 // (e.g. householdId -> household_id, participantUuid -> participant_uuid).
+// Each defines an explicit encode(to:) so EVERY column is present on EVERY row
+// (null where empty) — see encodeAlways above.
 
 struct RemoteParticipant: Codable {
     var uuid: UUID
@@ -70,6 +84,22 @@ struct RemoteParticipant: Codable {
     var createdAt: Date
     var updatedAt: Date
     var deletedAt: Date?
+
+    enum CodingKeys: String, CodingKey {
+        case uuid, householdId, name, emoji, colorHex, createdAt, updatedAt, deletedAt
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var c = encoder.container(keyedBy: CodingKeys.self)
+        try c.encode(uuid, forKey: .uuid)
+        try c.encode(householdId, forKey: .householdId)
+        try c.encode(name, forKey: .name)
+        try c.encode(emoji, forKey: .emoji)
+        try c.encode(colorHex, forKey: .colorHex)
+        try c.encode(createdAt, forKey: .createdAt)
+        try c.encode(updatedAt, forKey: .updatedAt)
+        try c.encodeAlways(deletedAt, forKey: .deletedAt)
+    }
 }
 
 struct RemoteChore: Codable {
@@ -84,6 +114,25 @@ struct RemoteChore: Codable {
     var createdAt: Date
     var updatedAt: Date
     var deletedAt: Date?
+
+    enum CodingKeys: String, CodingKey {
+        case uuid, householdId, name, emoji, points, colorHex, isArchived, sortOrder, createdAt, updatedAt, deletedAt
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var c = encoder.container(keyedBy: CodingKeys.self)
+        try c.encode(uuid, forKey: .uuid)
+        try c.encode(householdId, forKey: .householdId)
+        try c.encode(name, forKey: .name)
+        try c.encode(emoji, forKey: .emoji)
+        try c.encode(points, forKey: .points)
+        try c.encodeAlways(colorHex, forKey: .colorHex)
+        try c.encode(isArchived, forKey: .isArchived)
+        try c.encode(sortOrder, forKey: .sortOrder)
+        try c.encode(createdAt, forKey: .createdAt)
+        try c.encode(updatedAt, forKey: .updatedAt)
+        try c.encodeAlways(deletedAt, forKey: .deletedAt)
+    }
 }
 
 struct RemoteCompletion: Codable {
@@ -97,6 +146,24 @@ struct RemoteCompletion: Codable {
     var choreUuid: UUID?
     var updatedAt: Date
     var deletedAt: Date?
+
+    enum CodingKeys: String, CodingKey {
+        case uuid, householdId, completedAt, pointsAwarded, choreName, choreEmoji, participantUuid, choreUuid, updatedAt, deletedAt
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var c = encoder.container(keyedBy: CodingKeys.self)
+        try c.encode(uuid, forKey: .uuid)
+        try c.encode(householdId, forKey: .householdId)
+        try c.encode(completedAt, forKey: .completedAt)
+        try c.encode(pointsAwarded, forKey: .pointsAwarded)
+        try c.encode(choreName, forKey: .choreName)
+        try c.encode(choreEmoji, forKey: .choreEmoji)
+        try c.encodeAlways(participantUuid, forKey: .participantUuid)
+        try c.encodeAlways(choreUuid, forKey: .choreUuid)
+        try c.encode(updatedAt, forKey: .updatedAt)
+        try c.encodeAlways(deletedAt, forKey: .deletedAt)
+    }
 }
 
 /// Returned by the create_household / join_household RPCs.
