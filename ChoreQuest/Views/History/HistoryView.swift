@@ -40,22 +40,29 @@ struct HistoryView: View {
             Group {
                 if completions.isEmpty {
                     emptyState
-                } else if filtered.isEmpty {
-                    ContentUnavailableView(
-                        "Nothing for \(filterDisplayName)",
-                        systemImage: "person.crop.circle.badge.questionmark",
-                        description: Text("No chores logged by this person yet.")
-                    )
                 } else {
-                    timeline
+                    VStack(spacing: 0) {
+                        ParticipantChips(
+                            participants: participants,
+                            selection: $filter,
+                            includeAllOption: true
+                        )
+                        .padding(.vertical, 8)
+
+                        if filtered.isEmpty {
+                            ContentUnavailableView(
+                                "Nothing for \(filterDisplayName)",
+                                systemImage: "person.crop.circle.badge.questionmark",
+                                description: Text("No chores logged by this person yet.")
+                            )
+                            .frame(maxHeight: .infinity)
+                        } else {
+                            timeline
+                        }
+                    }
                 }
             }
             .navigationTitle("History")
-            .toolbar {
-                if !participants.isEmpty {
-                    ToolbarItem(placement: .topBarTrailing) { filterMenu }
-                }
-            }
         }
     }
 
@@ -76,27 +83,6 @@ struct HistoryView: View {
                 }
             }
         }
-    }
-
-    private var filterMenu: some View {
-        Menu {
-            Button {
-                filter = nil
-            } label: {
-                Label("Everyone", systemImage: filter == nil ? "checkmark" : "person.2")
-            }
-            ForEach(participants) { person in
-                Button {
-                    filter = person
-                } label: {
-                    let isOn = filter?.persistentModelID == person.persistentModelID
-                    Label(person.name, systemImage: isOn ? "checkmark" : "person")
-                }
-            }
-        } label: {
-            Image(systemName: filter == nil ? "line.3.horizontal.decrease.circle" : "line.3.horizontal.decrease.circle.fill")
-        }
-        .accessibilityLabel(Text("Filter by person"))
     }
 
     private var emptyState: some View {
