@@ -86,12 +86,14 @@ language sql stable security definer set search_path = public as $$
 $$;
 
 -- household_members: a user only ever sees/edits their own membership rows.
+-- Read own memberships and leave a household. There is deliberately NO direct
+-- INSERT policy: membership is only ever created by the SECURITY DEFINER
+-- create_household()/join_household() RPCs (which validate the invite code), so
+-- the only way in is via a valid code.
 drop policy if exists "members_read_own" on public.household_members;
 create policy "members_read_own" on public.household_members
     for select to authenticated using (user_id = auth.uid());
-drop policy if exists "members_insert_own" on public.household_members;
-create policy "members_insert_own" on public.household_members
-    for insert to authenticated with check (user_id = auth.uid());
+drop policy if exists "members_insert_own" on public.household_members; -- removed (RPC-only join)
 drop policy if exists "members_delete_own" on public.household_members;
 create policy "members_delete_own" on public.household_members
     for delete to authenticated using (user_id = auth.uid());
@@ -126,8 +128,10 @@ returns public.households
 language plpgsql security definer set search_path = public as $$
 declare h public.households;
 begin
+    -- 8 hex chars (~32 bits) — short enough to share, large enough that brute
+    -- forcing via join_household is impractical for this threat model.
     insert into public.households (invite_code)
-        values (upper(substr(replace(gen_random_uuid()::text, '-', ''), 1, 6)))
+        values (upper(substr(replace(gen_random_uuid()::text, '-', ''), 1, 8)))
         returning * into h;
     insert into public.household_members (household_id, user_id) values (h.id, auth.uid());
     return h;
