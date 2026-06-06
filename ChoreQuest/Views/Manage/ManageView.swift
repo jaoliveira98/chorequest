@@ -18,6 +18,7 @@ struct ManageView: View {
     @State private var showingNewChore = false
     @State private var editingChore: Chore?
     @State private var participantPendingDelete: Participant?
+    @State private var showingResetChoresConfirm = false
 
     // Backup
     @State private var exportDocument: BackupDocument?
@@ -102,6 +103,18 @@ struct ManageView: View {
             } message: {
                 Text(backupMessage ?? "")
             }
+            .confirmationDialog(
+                "Reset chores to defaults?",
+                isPresented: $showingResetChoresConfirm,
+                titleVisibility: .visible
+            ) {
+                Button("Reset chores", role: .destructive) {
+                    Seeder.resetChores(context: context)
+                }
+                Button("Cancel", role: .cancel) { }
+            } message: {
+                Text("This removes your current chores and restores the default set. Already-logged history is kept. This can't be undone.")
+            }
         }
     }
 
@@ -177,6 +190,12 @@ struct ManageView: View {
                 showingNewChore = true
             } label: {
                 Label("Add chore", systemImage: "plus.circle")
+            }
+
+            Button(role: .destructive) {
+                showingResetChoresConfirm = true
+            } label: {
+                Label("Reset chores to defaults", systemImage: "arrow.counterclockwise")
             }
         } header: {
             HStack {
