@@ -17,6 +17,9 @@ struct RootTabView: View {
             )
             .tabItem { Label("Leaderboard", systemImage: "trophy.fill") }
 
+            QuickLogView()
+                .tabItem { Label("Log", systemImage: "plus.circle.fill") }
+
             PlaceholderScreen(
                 title: "History",
                 message: "Every chore, with the day and time it was done. Coming in CQ-4.",
