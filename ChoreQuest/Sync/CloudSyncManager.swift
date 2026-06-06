@@ -20,6 +20,8 @@ final class CloudSyncManager: ObservableObject {
     private let client = SupabaseClient.shared
     private let defaults = UserDefaults.standard
     private var isSyncing = false
+    private var debounceTask: Task<Void, Never>?
+    private var pollTask: Task<Void, Never>?
 
     // Persisted keys
     private let kHouseholdID = "cloud.householdID"
@@ -97,6 +99,36 @@ final class CloudSyncManager: ObservableObject {
             try await self.pushAll(householdID: hid)
             try await self.pull(householdID: hid)
         }
+    }
+
+    /// Call after a local change. Debounced so a burst of edits coalesces into one
+    /// sync that pushes the change up promptly (no manual "Sync now" needed).
+    func requestSync() {
+        guard householdID != nil else { return }
+        debounceTask?.cancel()
+        debounceTask = Task { [weak self] in
+            try? await Task.sleep(for: .seconds(0.5))
+            guard !Task.isCancelled else { return }
+            await self?.sync()
+        }
+    }
+
+    /// While the app is foregrounded, sync on an interval so the *other* phone's
+    /// changes show up on their own. No-op until linked.
+    func startAutoSync(every interval: Duration = .seconds(15)) {
+        stopAutoSync()
+        pollTask = Task { [weak self] in
+            while !Task.isCancelled {
+                try? await Task.sleep(for: interval)
+                guard !Task.isCancelled else { return }
+                await self?.sync()
+            }
+        }
+    }
+
+    func stopAutoSync() {
+        pollTask?.cancel()
+        pollTask = nil
     }
 
     /// Wraps a unit of work with session setup, membership healing, status, and
