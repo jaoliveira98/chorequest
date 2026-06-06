@@ -13,7 +13,8 @@ online.
 
 ## Requirements
 
-- A Mac with **Xcode 15 or newer** (free from the Mac App Store).
+- A Mac with **Xcode 16 or newer** (free from the Mac App Store). The committed project file uses the
+  Xcode 16 format.
 - An **Apple ID** (a free one is fine — see *Signing* below).
 - [XcodeGen](https://github.com/yonaskolb/XcodeGen) — only needed if you change the project structure
   and want to regenerate the Xcode project: `brew install xcodegen`.
@@ -55,12 +56,12 @@ project.yml                  XcodeGen spec (source of truth)
 ChoreQuest.xcodeproj/        Generated Xcode project (committed for convenience)
 ChoreQuest/
   ChoreQuestApp.swift        App entry point
-  Models/                    SwiftData @Models (CQ-2)
   Views/                     SwiftUI screens
     Components/              Reusable views
-  Helpers/                   Small utilities
   Resources/                 Assets.xcassets (app icon, accent color)
-Tests/                       Pure-logic unit tests (CQ-5)
+  Models/                    SwiftData @Models           (added in CQ-2)
+  Helpers/                   Small utilities             (added in CQ-2+)
+Tests/                       Pure-logic unit tests        (added in CQ-5)
 ```
 
 ## Roadmap (tracked as issues / PRs)
