@@ -7,6 +7,7 @@ import SwiftData
 struct QuickLogView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @EnvironmentObject private var sync: PhoneSyncManager
 
     @Query(sort: \Participant.createdAt, order: .forward)
     private var participants: [Participant]
@@ -168,6 +169,7 @@ struct QuickLogView: View {
 
         context.insert(Completion(chore: chore, participant: who))
         context.saveChanges()
+        sync.pushSnapshot() // keep the watch's points/chores in step
 
         if participant == nil {
             lastLoggerUUID = who.uuid.uuidString
@@ -195,6 +197,11 @@ struct QuickLogView: View {
 }
 
 #Preview {
-    QuickLogView()
-        .modelContainer(for: [Participant.self, Chore.self, Completion.self], inMemory: true)
+    let container = try! ModelContainer(
+        for: Participant.self, Chore.self, Completion.self,
+        configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+    )
+    return QuickLogView()
+        .modelContainer(container)
+        .environmentObject(PhoneSyncManager(modelContainer: container))
 }

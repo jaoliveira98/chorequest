@@ -13,7 +13,10 @@
 		1B71AA4006A3B825E2E6F511 /* ParticipantEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4901A518D853CB635829B5F6 /* ParticipantEditor.swift */; };
 		1F8FF076D9A4ED92D7381ECB /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F908D4A5D6373E3E2FBF1 /* Participant.swift */; };
 		24E079228A9099A7A74E5430 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D80AC582783598DBA649B27A /* Assets.xcassets */; };
+		2B7BD0B7FF2F76C5215BB6B2 /* ChoreQuestWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E539D7201ABADFA2B908 /* ChoreQuestWatchApp.swift */; };
 		324C2AC96BAB3F5F0ED8D035 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4C0E36DF95B80E7C5BB886 /* RootTabView.swift */; };
+		34EAF9A13B6C5E59377C2BE4 /* ChoreQuestWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A15F02DD2D84C33B8A855E25 /* ChoreQuestWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3AB7A3EE3A6C7F40574A5FA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3194198176B7610C6DB9653D /* Assets.xcassets */; };
 		423DA0E6AABEBAA738B22866 /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F365058738AD57AABBD88507 /* PressableButtonStyle.swift */; };
 		42E0AB05FF0B0C41BD3ED863 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA95FF6DEE00CAB23C40B8C /* ConfettiView.swift */; };
 		49F7FF287CCACB1D0AA63C1B /* Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DC9013041DDCE5D24B36F3 /* Backup.swift */; };
@@ -23,28 +26,45 @@
 		55CB3FD06604E4809757F33D /* LeaderboardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7285C9A80EBE38A60B58F /* LeaderboardRow.swift */; };
 		58164F66B5AE52EB1E3F66CA /* RewardPingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEE234695F03FEF37089117 /* RewardPingView.swift */; };
 		613B9F793377CA43D62E46C9 /* Chore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9FB7B16DD1E3A9B4CD4050 /* Chore.swift */; };
+		621BACB3D3B9240CD7B4140C /* WatchSyncPayloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E17422B7E224843E177D01 /* WatchSyncPayloads.swift */; };
+		642BA6CADE4E2CA60F893576 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270F03A0151D134D4745D3A /* AvatarView.swift */; };
 		6650E280C087E717D99AC350 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE37F2A53BA6EF08B5457930 /* LeaderboardView.swift */; };
 		735944A84A637D6EE8AA40CB /* ManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A6E9D339F61A4FDB09057A /* ManageView.swift */; };
 		826EFA347464BD15DDF44E20 /* Completion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88ECC0400BBDD66EF64BCDA /* Completion.swift */; };
 		861A18BDB6A2DF602C449452 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81F21E41AE921951353BFF4 /* HistoryView.swift */; };
 		8A03C216920E3BDBABA6AA38 /* ChoreEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C3DC4BE3C361539ED79B7E /* ChoreEditor.swift */; };
+		8BD0D5C493855CE98DED53EC /* WatchSyncDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F0AEDEC6D5A4713BC42462 /* WatchSyncDTOs.swift */; };
 		8F544DABFF84140A59AB591F /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4836F69535BC1F635A582CDE /* Palette.swift */; };
 		913A2427A581395DC12F4BAC /* EmojiPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63A9A24C5AE11B3FC2F15F /* EmojiPicker.swift */; };
 		9C7821C47695FBB8DD7066B7 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF814F6FCA440A9722B8D7A3 /* StatsView.swift */; };
+		AB0D1FBFC3016C052E5B0D01 /* WatchLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD56A03980FDD8E208E4A94 /* WatchLogView.swift */; };
 		ACAE40B7028EC91468ED584C /* QuickLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FEA9E898B986DBDC9A1F8 /* QuickLogView.swift */; };
 		AD06BFDF13D25567F5747A36 /* ParticipantChips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AA158D8B381D1EFF6C157B /* ParticipantChips.swift */; };
+		AF8CEE4A1C22B60728491E77 /* WatchSyncDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F0AEDEC6D5A4713BC42462 /* WatchSyncDTOs.swift */; };
 		B69C0E5DB3EFA3E51E85BDA8 /* DateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A4ED504558241EBF3D4093 /* DateUtilsTests.swift */; };
 		B7715360F1814D3B6B37E760 /* Seeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE700305EE718ED1A656667 /* Seeder.swift */; };
 		B9295DA9817D4C5E02DE9C00 /* ColorSwatchPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1D10DE4D083F7F6887134 /* ColorSwatchPicker.swift */; };
 		BABB4BFEFB4E84DDDCDE9B29 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24146AD83A844DCCF236D19 /* Date+Extensions.swift */; };
 		C947BE81C1201AC1027B0DCE /* BackupDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE99BAD07347A2C308866E /* BackupDocument.swift */; };
+		CEBE641754B5BEC812C68217 /* WatchSyncPayloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E17422B7E224843E177D01 /* WatchSyncPayloads.swift */; };
+		DCF7FBB23F27B6E3A5F1B4C8 /* WatchSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A5E004476357F41137E609 /* WatchSyncManager.swift */; };
+		DD08829A3B81CF429FC1E627 /* PhoneSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DED25671E0FDD06E14B1DE9 /* PhoneSyncManager.swift */; };
+		E48D0B5700505037B609B8B1 /* WatchSyncWireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE49016FC47923DB4B438DF2 /* WatchSyncWireTests.swift */; };
 		E4EFFFB373103D8A16E73261 /* ChoreQuestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E689507EA24D73420DA7CDD /* ChoreQuestApp.swift */; };
 		E66B80402195D726BC46C2FD /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B5676C0E61F1F4BD36C9B1 /* Haptics.swift */; };
 		EA5DDA283C60F7D4A39C6626 /* ModelContext+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E926E39B0E66F62F66130B3 /* ModelContext+Save.swift */; };
+		F78EB2A008F9BABE9835A029 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EFD418CEB760447935F4D2 /* Color+Hex.swift */; };
 		FB8E2A237F0DE83EFE82EEBE /* CompletionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3C3895E56CDC05A167F9FF /* CompletionRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		30C00A6477E172A05C9A09CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D86F391F442F0960F2A70BD5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 28219AD902E1E1E1D2E7C191;
+			remoteInfo = ChoreQuestWatch;
+		};
 		DE23B3D242CD82FE9DD2CE08 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D86F391F442F0960F2A70BD5 /* Project object */;
@@ -54,13 +74,30 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2D95AC6911537124C6F16507 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				34EAF9A13B6C5E59377C2BE4 /* ChoreQuestWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		029F908D4A5D6373E3E2FBF1 /* Participant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Participant.swift; sourceTree = "<group>"; };
 		02E7285C9A80EBE38A60B58F /* LeaderboardRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardRow.swift; sourceTree = "<group>"; };
 		0B4C0E36DF95B80E7C5BB886 /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
+		0DED25671E0FDD06E14B1DE9 /* PhoneSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneSyncManager.swift; sourceTree = "<group>"; };
 		20DC9013041DDCE5D24B36F3 /* Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backup.swift; sourceTree = "<group>"; };
 		25A4ED504558241EBF3D4093 /* DateUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtilsTests.swift; sourceTree = "<group>"; };
+		2DD8E539D7201ABADFA2B908 /* ChoreQuestWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreQuestWatchApp.swift; sourceTree = "<group>"; };
 		2E926E39B0E66F62F66130B3 /* ModelContext+Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModelContext+Save.swift"; sourceTree = "<group>"; };
+		3194198176B7610C6DB9653D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40A78283EDDC843678A6BB70 /* ModelAndBackupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelAndBackupTests.swift; sourceTree = "<group>"; };
 		47AA158D8B381D1EFF6C157B /* ParticipantChips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantChips.swift; sourceTree = "<group>"; };
 		4836F69535BC1F635A582CDE /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
@@ -70,10 +107,13 @@
 		5DFE99BAD07347A2C308866E /* BackupDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupDocument.swift; sourceTree = "<group>"; };
 		6FEE234695F03FEF37089117 /* RewardPingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardPingView.swift; sourceTree = "<group>"; };
 		71A6E9D339F61A4FDB09057A /* ManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageView.swift; sourceTree = "<group>"; };
+		71E17422B7E224843E177D01 /* WatchSyncPayloads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncPayloads.swift; sourceTree = "<group>"; };
 		86C3DC4BE3C361539ED79B7E /* ChoreEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreEditor.swift; sourceTree = "<group>"; };
 		878AA7D100D644B3E54FEC70 /* ChoreTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreTile.swift; sourceTree = "<group>"; };
 		8CACC0DE355372D754C59053 /* ChoreQuest.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ChoreQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F9FB7B16DD1E3A9B4CD4050 /* Chore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chore.swift; sourceTree = "<group>"; };
+		A0A5E004476357F41137E609 /* WatchSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncManager.swift; sourceTree = "<group>"; };
+		A15F02DD2D84C33B8A855E25 /* ChoreQuestWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoreQuestWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A24146AD83A844DCCF236D19 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		ADBFAB0C49B9164D76E52421 /* ChoreQuestTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ChoreQuestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE37F2A53BA6EF08B5457930 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
@@ -85,11 +125,14 @@
 		D80AC582783598DBA649B27A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D81F21E41AE921951353BFF4 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		DF2FEA9E898B986DBDC9A1F8 /* QuickLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLogView.swift; sourceTree = "<group>"; };
+		EAD56A03980FDD8E208E4A94 /* WatchLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchLogView.swift; sourceTree = "<group>"; };
 		F0EFD418CEB760447935F4D2 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		F0F0AEDEC6D5A4713BC42462 /* WatchSyncDTOs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncDTOs.swift; sourceTree = "<group>"; };
 		F365058738AD57AABBD88507 /* PressableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressableButtonStyle.swift; sourceTree = "<group>"; };
 		F88ECC0400BBDD66EF64BCDA /* Completion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Completion.swift; sourceTree = "<group>"; };
 		FA684CE855A731B2BD6A3BC8 /* ColorHexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHexTests.swift; sourceTree = "<group>"; };
 		FBD1D10DE4D083F7F6887134 /* ColorSwatchPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSwatchPicker.swift; sourceTree = "<group>"; };
+		FE49016FC47923DB4B438DF2 /* WatchSyncWireTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncWireTests.swift; sourceTree = "<group>"; };
 		FF814F6FCA440A9722B8D7A3 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		FFE700305EE718ED1A656667 /* Seeder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seeder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				DF87E396E6CE7EAC115DE61D /* ChoreQuest */,
+				D2D1C9BA041C15D9B3D44D0A /* ChoreQuestWatch */,
+				67DD964123721FF5479AF496 /* Shared */,
 				481B61DB693814BC1FD0FF36 /* Tests */,
 				3856F9B45EDB9FD4A588A6A2 /* Products */,
 			);
@@ -118,6 +163,7 @@
 			children = (
 				8CACC0DE355372D754C59053 /* ChoreQuest.app */,
 				ADBFAB0C49B9164D76E52421 /* ChoreQuestTests.xctest */,
+				A15F02DD2D84C33B8A855E25 /* ChoreQuestWatch.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -138,6 +184,7 @@
 				FA684CE855A731B2BD6A3BC8 /* ColorHexTests.swift */,
 				25A4ED504558241EBF3D4093 /* DateUtilsTests.swift */,
 				40A78283EDDC843678A6BB70 /* ModelAndBackupTests.swift */,
+				FE49016FC47923DB4B438DF2 /* WatchSyncWireTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -160,6 +207,15 @@
 				F365058738AD57AABBD88507 /* PressableButtonStyle.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		67DD964123721FF5479AF496 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				F0F0AEDEC6D5A4713BC42462 /* WatchSyncDTOs.swift */,
+				71E17422B7E224843E177D01 /* WatchSyncPayloads.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		7679CF8294D00F71A4F44E35 /* Leaderboard */ = {
@@ -215,6 +271,33 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		CA5DC86C2CB3DFF87852BDB4 /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				A0A5E004476357F41137E609 /* WatchSyncManager.swift */,
+			);
+			path = Sync;
+			sourceTree = "<group>";
+		};
+		D2D1C9BA041C15D9B3D44D0A /* ChoreQuestWatch */ = {
+			isa = PBXGroup;
+			children = (
+				F7F7AF810A9A74E8B0CFB0ED /* Resources */,
+				CA5DC86C2CB3DFF87852BDB4 /* Sync */,
+				F72C5284EE0EEBBB8A575EDA /* Views */,
+				2DD8E539D7201ABADFA2B908 /* ChoreQuestWatchApp.swift */,
+			);
+			path = ChoreQuestWatch;
+			sourceTree = "<group>";
+		};
+		DC110CAFB6218F34EEB272DA /* Sync */ = {
+			isa = PBXGroup;
+			children = (
+				0DED25671E0FDD06E14B1DE9 /* PhoneSyncManager.swift */,
+			);
+			path = Sync;
+			sourceTree = "<group>";
+		};
 		DCF628CF2220DB064579EEB6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,25 +319,62 @@
 				DCF628CF2220DB064579EEB6 /* Helpers */,
 				B054485DC86548312CF8FD5B /* Models */,
 				AF401658CB857361E937E86F /* Resources */,
+				DC110CAFB6218F34EEB272DA /* Sync */,
 				B51648502A090D8D8C3E9C41 /* Views */,
 				4E689507EA24D73420DA7CDD /* ChoreQuestApp.swift */,
 			);
 			path = ChoreQuest;
 			sourceTree = "<group>";
 		};
+		F72C5284EE0EEBBB8A575EDA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EAD56A03980FDD8E208E4A94 /* WatchLogView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F7F7AF810A9A74E8B0CFB0ED /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3194198176B7610C6DB9653D /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		28219AD902E1E1E1D2E7C191 /* ChoreQuestWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 57AA08791EEFD1EA65B87B5D /* Build configuration list for PBXNativeTarget "ChoreQuestWatch" */;
+			buildPhases = (
+				361B23E59E9A63FE4D6F96FE /* Sources */,
+				9FFC769CA87C6E17063153A7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChoreQuestWatch;
+			packageProductDependencies = (
+			);
+			productName = ChoreQuestWatch;
+			productReference = A15F02DD2D84C33B8A855E25 /* ChoreQuestWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
 		DB7FDBF76D5B64D8CE970EDF /* ChoreQuest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 390DC204CEDD81B9606DBA82 /* Build configuration list for PBXNativeTarget "ChoreQuest" */;
 			buildPhases = (
 				252184BD747943FE54ADE312 /* Sources */,
 				C14BA935F5CE586D8C5222D9 /* Resources */,
+				2D95AC6911537124C6F16507 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				DC3903AE58234B78F284C3CD /* PBXTargetDependency */,
 			);
 			name = ChoreQuest;
 			packageProductDependencies = (
@@ -290,6 +410,10 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					28219AD902E1E1E1D2E7C191 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
 					DB7FDBF76D5B64D8CE970EDF = {
 						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
@@ -316,11 +440,20 @@
 			targets = (
 				DB7FDBF76D5B64D8CE970EDF /* ChoreQuest */,
 				DED45E51C12515A8FDD252F9 /* ChoreQuestTests */,
+				28219AD902E1E1E1D2E7C191 /* ChoreQuestWatch */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9FFC769CA87C6E17063153A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AB7A3EE3A6C7F40574A5FA6 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C14BA935F5CE586D8C5222D9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -360,6 +493,7 @@
 				1F8FF076D9A4ED92D7381ECB /* Participant.swift in Sources */,
 				AD06BFDF13D25567F5747A36 /* ParticipantChips.swift in Sources */,
 				1B71AA4006A3B825E2E6F511 /* ParticipantEditor.swift in Sources */,
+				DD08829A3B81CF429FC1E627 /* PhoneSyncManager.swift in Sources */,
 				423DA0E6AABEBAA738B22866 /* PressableButtonStyle.swift in Sources */,
 				ACAE40B7028EC91468ED584C /* QuickLogView.swift in Sources */,
 				58164F66B5AE52EB1E3F66CA /* RewardPingView.swift in Sources */,
@@ -367,6 +501,22 @@
 				B7715360F1814D3B6B37E760 /* Seeder.swift in Sources */,
 				9C7821C47695FBB8DD7066B7 /* StatsView.swift in Sources */,
 				143795670435925C18AA216D /* TimeRange.swift in Sources */,
+				8BD0D5C493855CE98DED53EC /* WatchSyncDTOs.swift in Sources */,
+				621BACB3D3B9240CD7B4140C /* WatchSyncPayloads.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		361B23E59E9A63FE4D6F96FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				642BA6CADE4E2CA60F893576 /* AvatarView.swift in Sources */,
+				2B7BD0B7FF2F76C5215BB6B2 /* ChoreQuestWatchApp.swift in Sources */,
+				F78EB2A008F9BABE9835A029 /* Color+Hex.swift in Sources */,
+				AB0D1FBFC3016C052E5B0D01 /* WatchLogView.swift in Sources */,
+				AF8CEE4A1C22B60728491E77 /* WatchSyncDTOs.swift in Sources */,
+				DCF7FBB23F27B6E3A5F1B4C8 /* WatchSyncManager.swift in Sources */,
+				CEBE641754B5BEC812C68217 /* WatchSyncPayloads.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +527,7 @@
 				4B8950BADC248730D642FB9B /* ColorHexTests.swift in Sources */,
 				B69C0E5DB3EFA3E51E85BDA8 /* DateUtilsTests.swift in Sources */,
 				1759F3E7EE798B1D8258EBA6 /* ModelAndBackupTests.swift in Sources */,
+				E48D0B5700505037B609B8B1 /* WatchSyncWireTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +538,11 @@
 			isa = PBXTargetDependency;
 			target = DB7FDBF76D5B64D8CE970EDF /* ChoreQuest */;
 			targetProxy = DE23B3D242CD82FE9DD2CE08 /* PBXContainerItemProxy */;
+		};
+		DC3903AE58234B78F284C3CD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 28219AD902E1E1E1D2E7C191 /* ChoreQuestWatch */;
+			targetProxy = 30C00A6477E172A05C9A09CE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -406,6 +562,28 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChoreQuest.app/ChoreQuest";
+			};
+			name = Release;
+		};
+		185E2A4979411304AB00AE54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ChoreQuest;
+				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.jaoliveira98.chorequest;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jaoliveira98.chorequest.watchkitapp;
+				PRODUCT_NAME = ChoreQuest;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};
@@ -462,7 +640,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -529,7 +706,6 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -578,6 +754,28 @@
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		EE0CBFCF2E925030BF0DB2BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ChoreQuest;
+				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.jaoliveira98.chorequest;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jaoliveira98.chorequest.watchkitapp;
+				PRODUCT_NAME = ChoreQuest;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
@@ -633,6 +831,15 @@
 			buildConfigurations = (
 				8267F07075F52D1B33BA1E95 /* Debug */,
 				3B606787AC9E6A1A287DE24C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		57AA08791EEFD1EA65B87B5D /* Build configuration list for PBXNativeTarget "ChoreQuestWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE0CBFCF2E925030BF0DB2BB /* Debug */,
+				185E2A4979411304AB00AE54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
