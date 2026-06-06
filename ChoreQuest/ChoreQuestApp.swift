@@ -35,11 +35,18 @@ struct ChoreQuestApp: App {
                 .task {
                     watchSync.activate()
                     await cloudSync.sync()
+                    cloudSync.startAutoSync()
                 }
                 .onChange(of: scenePhase) { _, phase in
-                    if phase == .active {
+                    switch phase {
+                    case .active:
                         watchSync.pushSnapshot()
                         Task { await cloudSync.sync() }
+                        cloudSync.startAutoSync()
+                    case .background, .inactive:
+                        cloudSync.stopAutoSync()
+                    @unknown default:
+                        break
                     }
                 }
         }

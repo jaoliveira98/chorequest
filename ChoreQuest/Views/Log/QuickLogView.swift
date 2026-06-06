@@ -8,6 +8,7 @@ struct QuickLogView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @EnvironmentObject private var sync: PhoneSyncManager
+    @EnvironmentObject private var cloud: CloudSyncManager
 
     @Query(sort: \Participant.createdAt, order: .forward)
     private var allParticipants: [Participant]
@@ -85,6 +86,7 @@ struct QuickLogView: View {
             }
             .padding(.vertical)
         }
+        .refreshable { await cloud.sync() }
     }
 
     @ViewBuilder
@@ -172,7 +174,8 @@ struct QuickLogView: View {
 
         context.insert(Completion(chore: chore, participant: who))
         context.saveChanges()
-        sync.pushSnapshot() // keep the watch's points/chores in step
+        sync.pushSnapshot()  // keep the watch's points/chores in step
+        cloud.requestSync()  // push to the other phone promptly
 
         if participant == nil {
             lastLoggerUUID = who.uuid.uuidString
@@ -207,4 +210,5 @@ struct QuickLogView: View {
     return QuickLogView()
         .modelContainer(container)
         .environmentObject(PhoneSyncManager(modelContainer: container))
+        .environmentObject(CloudSyncManager(container: container))
 }

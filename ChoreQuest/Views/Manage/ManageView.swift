@@ -120,6 +120,7 @@ struct ManageView: View {
             ) {
                 Button("Reset chores", role: .destructive) {
                     Seeder.resetChores(context: context)
+                    cloud.requestSync()
                 }
                 Button("Cancel", role: .cancel) { }
             } message: {
@@ -416,23 +417,27 @@ struct ManageView: View {
             chore.touch()
         }
         context.saveChanges()
+        cloud.requestSync()
     }
 
     private func setArchived(_ chore: Chore, _ archived: Bool) {
         chore.isArchived = archived
         chore.touch()
         context.saveChanges()
+        cloud.requestSync()
     }
 
     private func delete(_ chore: Chore) {
         chore.softDelete()
         context.saveChanges()
+        cloud.requestSync()
     }
 
     private func delete(_ person: Participant) {
         person.softDeleteCascading()
         context.saveChanges()
         participantPendingDelete = nil
+        cloud.requestSync()
     }
 }
 

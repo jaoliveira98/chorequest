@@ -5,6 +5,7 @@ import SwiftData
 struct ParticipantEditor: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var cloud: CloudSyncManager
 
     private let participant: Participant?
 
@@ -77,11 +78,17 @@ struct ParticipantEditor: View {
             context.insert(Participant(name: trimmedName, emoji: emoji, colorHex: colorHex))
         }
         context.saveChanges()
+        cloud.requestSync()
         dismiss()
     }
 }
 
 #Preview {
-    ParticipantEditor()
-        .modelContainer(for: [Participant.self, Chore.self, Completion.self], inMemory: true)
+    let container = try! ModelContainer(
+        for: Participant.self, Chore.self, Completion.self,
+        configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+    )
+    return ParticipantEditor()
+        .modelContainer(container)
+        .environmentObject(CloudSyncManager(container: container))
 }

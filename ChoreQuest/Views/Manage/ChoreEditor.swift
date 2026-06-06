@@ -6,6 +6,7 @@ import SwiftData
 struct ChoreEditor: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var cloud: CloudSyncManager
 
     private let chore: Chore?
     private let nextSortOrder: Int
@@ -117,11 +118,17 @@ struct ChoreEditor: View {
             )
         }
         context.saveChanges()
+        cloud.requestSync()
         dismiss()
     }
 }
 
 #Preview {
-    ChoreEditor()
-        .modelContainer(for: [Participant.self, Chore.self, Completion.self], inMemory: true)
+    let container = try! ModelContainer(
+        for: Participant.self, Chore.self, Completion.self,
+        configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+    )
+    return ChoreEditor()
+        .modelContainer(container)
+        .environmentObject(CloudSyncManager(container: container))
 }

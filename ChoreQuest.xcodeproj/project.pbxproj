@@ -15,7 +15,7 @@
 		24E079228A9099A7A74E5430 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D80AC582783598DBA649B27A /* Assets.xcassets */; };
 		2B7BD0B7FF2F76C5215BB6B2 /* ChoreQuestWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E539D7201ABADFA2B908 /* ChoreQuestWatchApp.swift */; };
 		324C2AC96BAB3F5F0ED8D035 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4C0E36DF95B80E7C5BB886 /* RootTabView.swift */; };
-		34EAF9A13B6C5E59377C2BE4 /* ChoreQuestWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A15F02DD2D84C33B8A855E25 /* ChoreQuestWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		34EAF9A13B6C5E59377C2BE4 /* ChoreQuest.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A15F02DD2D84C33B8A855E25 /* ChoreQuest.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3AB7A3EE3A6C7F40574A5FA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3194198176B7610C6DB9653D /* Assets.xcassets */; };
 		423DA0E6AABEBAA738B22866 /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F365058738AD57AABBD88507 /* PressableButtonStyle.swift */; };
 		42E0AB05FF0B0C41BD3ED863 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA95FF6DEE00CAB23C40B8C /* ConfettiView.swift */; };
@@ -88,7 +88,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				34EAF9A13B6C5E59377C2BE4 /* ChoreQuestWatch.app in Embed Watch Content */,
+				34EAF9A13B6C5E59377C2BE4 /* ChoreQuest.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -120,14 +120,14 @@
 		83110D7AE987C525B2C304D9 /* SupabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseClient.swift; sourceTree = "<group>"; };
 		86C3DC4BE3C361539ED79B7E /* ChoreEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreEditor.swift; sourceTree = "<group>"; };
 		878AA7D100D644B3E54FEC70 /* ChoreTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreTile.swift; sourceTree = "<group>"; };
-		8CACC0DE355372D754C59053 /* ChoreQuest.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ChoreQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CACC0DE355372D754C59053 /* ChoreQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoreQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F9FB7B16DD1E3A9B4CD4050 /* Chore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chore.swift; sourceTree = "<group>"; };
 		909EDB58C2BE4B4868AAF045 /* CloudSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSyncManager.swift; sourceTree = "<group>"; };
 		9E2507A8DE6065B99C93B5B4 /* CloudSyncMergeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSyncMergeTests.swift; sourceTree = "<group>"; };
 		A0A5E004476357F41137E609 /* WatchSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncManager.swift; sourceTree = "<group>"; };
-		A15F02DD2D84C33B8A855E25 /* ChoreQuestWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoreQuestWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A15F02DD2D84C33B8A855E25 /* ChoreQuest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoreQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A24146AD83A844DCCF236D19 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
-		ADBFAB0C49B9164D76E52421 /* ChoreQuestTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ChoreQuestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADBFAB0C49B9164D76E52421 /* ChoreQuestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChoreQuestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE37F2A53BA6EF08B5457930 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		AF3C3895E56CDC05A167F9FF /* CompletionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionRow.swift; sourceTree = "<group>"; };
 		BF63A9A24C5AE11B3FC2F15F /* EmojiPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPicker.swift; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 			children = (
 				8CACC0DE355372D754C59053 /* ChoreQuest.app */,
 				ADBFAB0C49B9164D76E52421 /* ChoreQuestTests.xctest */,
-				A15F02DD2D84C33B8A855E25 /* ChoreQuestWatch.app */,
+				A15F02DD2D84C33B8A855E25 /* ChoreQuest.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -381,7 +381,7 @@
 			packageProductDependencies = (
 			);
 			productName = ChoreQuestWatch;
-			productReference = A15F02DD2D84C33B8A855E25 /* ChoreQuestWatch.app */;
+			productReference = A15F02DD2D84C33B8A855E25 /* ChoreQuest.app */;
 			productType = "com.apple.product-type.application";
 		};
 		DB7FDBF76D5B64D8CE970EDF /* ChoreQuest */ = {
@@ -429,7 +429,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 2650;
 				TargetAttributes = {
 					28219AD902E1E1E1D2E7C191 = {
 						DevelopmentTeam = D5TCJMS37M;
@@ -619,6 +619,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -651,10 +652,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = D5TCJMS37M;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -668,6 +671,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -678,6 +682,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -710,10 +715,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = D5TCJMS37M;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -734,6 +741,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

@@ -13,6 +13,8 @@ struct HistoryView: View {
     @Query(sort: \Participant.createdAt, order: .forward)
     private var participants: [Participant]
 
+    @EnvironmentObject private var cloud: CloudSyncManager
+
     @State private var filter: Participant?
 
     private var visibleCompletions: [Completion] {
@@ -91,6 +93,7 @@ struct HistoryView: View {
                 }
             }
         }
+        .refreshable { await cloud.sync() }
     }
 
     private var emptyState: some View {
@@ -104,10 +107,16 @@ struct HistoryView: View {
     private func delete(_ completion: Completion) {
         completion.softDelete()
         context.saveChanges()
+        cloud.requestSync()
     }
 }
 
 #Preview {
-    HistoryView()
-        .modelContainer(for: [Participant.self, Chore.self, Completion.self], inMemory: true)
+    let container = try! ModelContainer(
+        for: Participant.self, Chore.self, Completion.self,
+        configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+    )
+    return HistoryView()
+        .modelContainer(container)
+        .environmentObject(CloudSyncManager(container: container))
 }

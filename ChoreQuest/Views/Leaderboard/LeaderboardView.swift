@@ -7,6 +7,8 @@ struct LeaderboardView: View {
     @Query(sort: \Participant.createdAt, order: .forward)
     private var participants: [Participant]
 
+    @EnvironmentObject private var cloud: CloudSyncManager
+
     @AppStorage("leaderboardRange") private var rangeRaw: String = TimeRange.week.rawValue
 
     @State private var showingStats = false
@@ -114,6 +116,7 @@ struct LeaderboardView: View {
         // Animate rank reordering both when the range changes and when points
         // change from a new log or a deleted completion.
         .animation(.spring(response: 0.4, dampingFraction: 0.8), value: standings.map(\.points))
+        .refreshable { await cloud.sync() }
     }
 
     private var emptyState: some View {
@@ -126,6 +129,11 @@ struct LeaderboardView: View {
 }
 
 #Preview {
-    LeaderboardView()
-        .modelContainer(for: [Participant.self, Chore.self, Completion.self], inMemory: true)
+    let container = try! ModelContainer(
+        for: Participant.self, Chore.self, Completion.self,
+        configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+    )
+    return LeaderboardView()
+        .modelContainer(container)
+        .environmentObject(CloudSyncManager(container: container))
 }
