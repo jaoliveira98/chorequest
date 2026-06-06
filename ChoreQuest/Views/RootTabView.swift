@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 /// The root tab bar.
 /// - Leaderboard (CQ-4)
@@ -24,6 +25,11 @@ struct RootTabView: View {
 }
 
 #Preview {
-    RootTabView()
-        .modelContainer(for: [Participant.self, Chore.self, Completion.self], inMemory: true)
+    let container = try! ModelContainer(
+        for: Participant.self, Chore.self, Completion.self,
+        configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+    )
+    return RootTabView()
+        .modelContainer(container)
+        .environmentObject(PhoneSyncManager(modelContainer: container))
 }
