@@ -24,12 +24,8 @@ struct RootTabView: View {
             )
             .tabItem { Label("History", systemImage: "clock.fill") }
 
-            PlaceholderScreen(
-                title: "Manage",
-                message: "Add people and chores. Coming in CQ-2.",
-                systemImage: "slider.horizontal.3"
-            )
-            .tabItem { Label("Manage", systemImage: "slider.horizontal.3") }
+            ManageView()
+                .tabItem { Label("Manage", systemImage: "slider.horizontal.3") }
         }
     }
 }
