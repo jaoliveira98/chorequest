@@ -9,19 +9,14 @@ import SwiftData
 /// foreground; the app keeps working offline regardless.
 @main
 struct ChoreQuestApp: App {
-    let container: ModelContainer
+    let container = AppModelContainer.shared
     @StateObject private var watchSync: PhoneSyncManager
     @StateObject private var cloudSync: CloudSyncManager
     @Environment(\.scenePhase) private var scenePhase
 
     init() {
-        let container: ModelContainer
-        do {
-            container = try ModelContainer(for: Participant.self, Chore.self, Completion.self)
-        } catch {
-            fatalError("Failed to create the ChoreQuest data store: \(error)")
-        }
-        self.container = container
+        // Shared with the App Intents (Siri / Shortcuts) so both use one store.
+        let container = AppModelContainer.shared
         Seeder.seedIfNeeded(context: container.mainContext)
         _watchSync = StateObject(wrappedValue: PhoneSyncManager(modelContainer: container))
         _cloudSync = StateObject(wrappedValue: CloudSyncManager(container: container))
