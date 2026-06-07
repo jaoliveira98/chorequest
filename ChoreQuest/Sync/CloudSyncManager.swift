@@ -144,6 +144,7 @@ final class CloudSyncManager: ObservableObject {
             lastSyncedAt = .now
             errorMessage = nil
             status = .idle
+            WidgetUpdater.refresh(context)  // reflect pulled changes on the widgets
         } catch {
             // Discard any partial, unsaved changes so a failed sync/join leaves
             // the local store consistent.

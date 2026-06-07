@@ -34,6 +34,7 @@ struct ChoreQuestApp: App {
                 .environmentObject(cloudSync)
                 .task {
                     watchSync.activate()
+                    WidgetUpdater.refresh(container.mainContext)
                     await cloudSync.sync()
                     cloudSync.startAutoSync()
                 }
@@ -41,6 +42,7 @@ struct ChoreQuestApp: App {
                     switch phase {
                     case .active:
                         watchSync.pushSnapshot()
+                        WidgetUpdater.refresh(container.mainContext)
                         Task { await cloudSync.sync() }
                         cloudSync.startAutoSync()
                     case .background, .inactive:

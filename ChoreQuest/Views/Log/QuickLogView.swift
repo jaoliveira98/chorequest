@@ -176,6 +176,7 @@ struct QuickLogView: View {
         context.saveChanges()
         sync.pushSnapshot()  // keep the watch's points/chores in step
         cloud.requestSync()  // push to the other phone promptly
+        WidgetUpdater.refresh(context)  // refresh the home-screen widgets
 
         if participant == nil {
             lastLoggerUUID = who.uuid.uuidString
