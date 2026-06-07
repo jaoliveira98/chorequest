@@ -8,6 +8,7 @@ import SwiftUI
 @main
 struct ChoreQuestWidgetBundle: WidgetBundle {
     var body: some Widget {
+        QuickLogWidget()
         LeaderboardWidget()
         TodayWidget()
     }
