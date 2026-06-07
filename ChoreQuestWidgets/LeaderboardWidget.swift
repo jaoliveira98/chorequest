@@ -18,8 +18,14 @@ private struct LeaderboardWidgetView: View {
     @Environment(\.widgetFamily) private var family
     let snapshot: WidgetSnapshot
 
+    // If the app hasn't run since a previous week, the stored week points are stale —
+    // show the empty state rather than last week's numbers.
+    private var isThisWeek: Bool {
+        Calendar.current.isDate(snapshot.generatedAt, equalTo: Date(), toGranularity: .weekOfYear)
+    }
+
     var body: some View {
-        if snapshot.standings.isEmpty {
+        if snapshot.standings.isEmpty || !isThisWeek {
             empty
         } else if family == .systemSmall {
             small

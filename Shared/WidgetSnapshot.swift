@@ -9,11 +9,17 @@ enum WidgetSharedConfig {
     static let appGroup = "group.com.jaoliveira98.chorequest"
 }
 
-struct WidgetSnapshot: Codable {
+struct WidgetSnapshot: Codable, Equatable {
     var generatedAt: Date
     var standings: [Standing]
     var todayTotal: Int
     var weekTotal: Int
+
+    // Equality ignores generatedAt so the app can skip re-publishing (and waking
+    // WidgetKit) when the actual content hasn't changed.
+    static func == (lhs: WidgetSnapshot, rhs: WidgetSnapshot) -> Bool {
+        lhs.standings == rhs.standings && lhs.todayTotal == rhs.todayTotal && lhs.weekTotal == rhs.weekTotal
+    }
 
     struct Standing: Codable, Identifiable, Hashable {
         var id: UUID

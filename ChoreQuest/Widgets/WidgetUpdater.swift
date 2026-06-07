@@ -39,8 +39,13 @@ enum WidgetUpdater {
             return lhs.name.localizedCaseInsensitiveCompare(rhs.name) == .orderedAscending
         }
 
-        WidgetStore.save(WidgetSnapshot(generatedAt: .now, standings: standings,
-                                        todayTotal: todayTotal, weekTotal: weekTotal))
+        let snapshot = WidgetSnapshot(generatedAt: .now, standings: standings,
+                                      todayTotal: todayTotal, weekTotal: weekTotal)
+        // Skip the write + timeline reload when nothing actually changed (this runs
+        // on every sync, incl. the periodic foreground poll) to avoid churn and the
+        // WidgetKit reload budget.
+        guard snapshot != WidgetStore.load() else { return }
+        WidgetStore.save(snapshot)
         WidgetCenter.shared.reloadAllTimelines()
     }
 }

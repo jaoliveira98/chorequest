@@ -18,6 +18,12 @@ private struct TodayWidgetView: View {
     @Environment(\.widgetFamily) private var family
     let snapshot: WidgetSnapshot
 
+    // If the app hasn't run since before today, the stored "today" numbers are
+    // yesterday's — treat them as 0 until the app republishes.
+    private var isToday: Bool { Calendar.current.isDateInToday(snapshot.generatedAt) }
+    private var todayTotal: Int { isToday ? snapshot.todayTotal : 0 }
+    private func todayPoints(_ standing: WidgetSnapshot.Standing) -> Int { isToday ? standing.todayPoints : 0 }
+
     var body: some View {
         if family == .systemSmall { small } else { medium }
     }
@@ -32,26 +38,26 @@ private struct TodayWidgetView: View {
         VStack(alignment: .leading, spacing: 4) {
             header
             Spacer(minLength: 0)
-            Text("\(snapshot.todayTotal)")
+            Text("\(todayTotal)")
                 .font(.system(size: 46, weight: .bold, design: .rounded))
                 .monospacedDigit()
                 .minimumScaleFactor(0.5)
                 .lineLimit(1)
-            Text(snapshot.todayTotal == 1 ? "point today" : "points today")
+            Text(todayTotal == 1 ? "point today" : "points today")
                 .font(.caption).foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
     private var medium: some View {
-        let people = snapshot.standings.sorted { $0.todayPoints > $1.todayPoints }
+        let people = snapshot.standings.sorted { todayPoints($0) > todayPoints($1) }
         return VStack(alignment: .leading, spacing: 8) {
             HStack {
                 header
                 Spacer()
-                Text("\(snapshot.todayTotal) total").font(.caption.weight(.semibold)).foregroundStyle(.secondary)
+                Text("\(todayTotal) total").font(.caption.weight(.semibold)).foregroundStyle(.secondary)
             }
-            if people.isEmpty || people.allSatisfy({ $0.todayPoints == 0 }) {
+            if people.isEmpty || people.allSatisfy({ todayPoints($0) == 0 }) {
                 Spacer(minLength: 0)
                 Text("Nothing logged yet today").font(.subheadline).foregroundStyle(.secondary)
                 Spacer(minLength: 0)
@@ -61,7 +67,7 @@ private struct TodayWidgetView: View {
                         AvatarView(emoji: standing.emoji, colorHex: standing.colorHex, size: 26)
                         Text(standing.name).font(.subheadline).lineLimit(1)
                         Spacer()
-                        Text("+\(standing.todayPoints)")
+                        Text("+\(todayPoints(standing))")
                             .font(.subheadline.bold().monospacedDigit())
                             .foregroundStyle(Color(hex: standing.colorHex))
                     }

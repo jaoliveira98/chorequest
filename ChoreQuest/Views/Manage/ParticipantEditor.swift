@@ -79,6 +79,7 @@ struct ParticipantEditor: View {
         }
         context.saveChanges()
         cloud.requestSync()
+        WidgetUpdater.refresh(context)  // name/emoji/color/new person show on the widget
         dismiss()
     }
 }

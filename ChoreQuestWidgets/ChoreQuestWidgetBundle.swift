@@ -30,9 +30,14 @@ struct Provider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<SnapshotEntry>) -> Void) {
-        let entry = SnapshotEntry(date: Date(), snapshot: WidgetStore.load())
-        let next = Calendar.current.date(byAdding: .minute, value: 30, to: Date()) ?? Date().addingTimeInterval(1800)
-        completion(Timeline(entries: [entry], policy: .after(next)))
+        let now = Date()
+        let entry = SnapshotEntry(date: now, snapshot: WidgetStore.load())
+        // Refresh every 30 min as a fallback, but no later than the next midnight so
+        // "today"/"this week" roll over promptly even if the app stays closed.
+        let halfHour = now.addingTimeInterval(30 * 60)
+        let nextMidnight = Calendar.current.nextDate(after: now, matching: DateComponents(hour: 0, minute: 0, second: 0),
+                                                     matchingPolicy: .nextTime) ?? halfHour
+        completion(Timeline(entries: [entry], policy: .after(min(halfHour, nextMidnight))))
     }
 }
 

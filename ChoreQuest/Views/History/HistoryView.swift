@@ -108,6 +108,7 @@ struct HistoryView: View {
         completion.softDelete()
         context.saveChanges()
         cloud.requestSync()
+        WidgetUpdater.refresh(context)  // keep widgets fresh even when not cloud-linked
     }
 }
 

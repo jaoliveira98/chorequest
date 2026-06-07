@@ -438,6 +438,7 @@ struct ManageView: View {
         context.saveChanges()
         participantPendingDelete = nil
         cloud.requestSync()
+        WidgetUpdater.refresh(context)  // person + their points leave the widget
     }
 }
 
