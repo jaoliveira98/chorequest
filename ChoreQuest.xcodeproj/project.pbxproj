@@ -7,22 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1112062B197C918894AB6820 /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA46C1F51FD90A1E4846070 /* WidgetSnapshot.swift */; };
 		143795670435925C18AA216D /* TimeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE177524D0410ABD8BA1E72 /* TimeRange.swift */; };
 		146AD06CE72D90952F5E191B /* ChoreTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878AA7D100D644B3E54FEC70 /* ChoreTile.swift */; };
 		1759F3E7EE798B1D8258EBA6 /* ModelAndBackupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A78283EDDC843678A6BB70 /* ModelAndBackupTests.swift */; };
 		1B71AA4006A3B825E2E6F511 /* ParticipantEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4901A518D853CB635829B5F6 /* ParticipantEditor.swift */; };
 		1F8FF076D9A4ED92D7381ECB /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F908D4A5D6373E3E2FBF1 /* Participant.swift */; };
+		208A501FFE7F678D1B79AEFC /* ChoreQuestWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EF53A85F062BD3CD7C5DC5 /* ChoreQuestWidgetBundle.swift */; };
 		24E079228A9099A7A74E5430 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D80AC582783598DBA649B27A /* Assets.xcassets */; };
 		2B7BD0B7FF2F76C5215BB6B2 /* ChoreQuestWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E539D7201ABADFA2B908 /* ChoreQuestWatchApp.swift */; };
 		324C2AC96BAB3F5F0ED8D035 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4C0E36DF95B80E7C5BB886 /* RootTabView.swift */; };
 		34EAF9A13B6C5E59377C2BE4 /* ChoreQuestWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A15F02DD2D84C33B8A855E25 /* ChoreQuestWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		36DA00846EADC998FBABF103 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270F03A0151D134D4745D3A /* AvatarView.swift */; };
 		3AB7A3EE3A6C7F40574A5FA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3194198176B7610C6DB9653D /* Assets.xcassets */; };
+		413D3CB8948503AC5B2C7655 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EFD418CEB760447935F4D2 /* Color+Hex.swift */; };
 		423DA0E6AABEBAA738B22866 /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F365058738AD57AABBD88507 /* PressableButtonStyle.swift */; };
 		42E0AB05FF0B0C41BD3ED863 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA95FF6DEE00CAB23C40B8C /* ConfettiView.swift */; };
 		447AE38B5B9154CD407172A3 /* SupabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83110D7AE987C525B2C304D9 /* SupabaseClient.swift */; };
 		45D5AB5032AF74F61A27E265 /* CloudSyncMergeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2507A8DE6065B99C93B5B4 /* CloudSyncMergeTests.swift */; };
 		49F7FF287CCACB1D0AA63C1B /* Backup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DC9013041DDCE5D24B36F3 /* Backup.swift */; };
 		4B8950BADC248730D642FB9B /* ColorHexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA684CE855A731B2BD6A3BC8 /* ColorHexTests.swift */; };
+		4EB4D0356C6E1CCDC02F9F5B /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA46C1F51FD90A1E4846070 /* WidgetSnapshot.swift */; };
 		511E71503ED2AB8A8ECFA1CC /* SyncableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF8C814B57757682E87EE04 /* SyncableModel.swift */; };
 		5315CF1EF3655BCBF3893446 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EFD418CEB760447935F4D2 /* Color+Hex.swift */; };
 		547F7B240B885A2291C5033C /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270F03A0151D134D4745D3A /* AvatarView.swift */; };
@@ -46,20 +51,25 @@
 		ACAE40B7028EC91468ED584C /* QuickLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2FEA9E898B986DBDC9A1F8 /* QuickLogView.swift */; };
 		AD06BFDF13D25567F5747A36 /* ParticipantChips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47AA158D8B381D1EFF6C157B /* ParticipantChips.swift */; };
 		AF8CEE4A1C22B60728491E77 /* WatchSyncDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F0AEDEC6D5A4713BC42462 /* WatchSyncDTOs.swift */; };
+		B04F70803B4777AB452E4E4A /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA46C1F51FD90A1E4846070 /* WidgetSnapshot.swift */; };
 		B536516A5AED3E438B3620BC /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDADC2658EFBAEB10F8BD69 /* Keychain.swift */; };
 		B628B415EDDF7662D5EA6F3F /* CloudSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909EDB58C2BE4B4868AAF045 /* CloudSyncManager.swift */; };
 		B69C0E5DB3EFA3E51E85BDA8 /* DateUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A4ED504558241EBF3D4093 /* DateUtilsTests.swift */; };
 		B7715360F1814D3B6B37E760 /* Seeder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE700305EE718ED1A656667 /* Seeder.swift */; };
 		B9295DA9817D4C5E02DE9C00 /* ColorSwatchPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD1D10DE4D083F7F6887134 /* ColorSwatchPicker.swift */; };
 		BABB4BFEFB4E84DDDCDE9B29 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24146AD83A844DCCF236D19 /* Date+Extensions.swift */; };
+		C17A56813E7AB6E04890848E /* WidgetUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A81EEBC00931C2330CD1F5 /* WidgetUpdater.swift */; };
 		C527116DD415C8E0589FB329 /* SyncEncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81300E2182EC18B709FFCE79 /* SyncEncodingTests.swift */; };
 		C947BE81C1201AC1027B0DCE /* BackupDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE99BAD07347A2C308866E /* BackupDocument.swift */; };
+		CE1FD6A3D43FB652CCEE1DAF /* ChoreQuestWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E337060545532E57C01FB623 /* ChoreQuestWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CEBE641754B5BEC812C68217 /* WatchSyncPayloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E17422B7E224843E177D01 /* WatchSyncPayloads.swift */; };
+		D058156A2A049E13B04651D3 /* LeaderboardWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F1C145FAA38BA42284F1EC /* LeaderboardWidget.swift */; };
 		DCF7FBB23F27B6E3A5F1B4C8 /* WatchSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A5E004476357F41137E609 /* WatchSyncManager.swift */; };
 		DD08829A3B81CF429FC1E627 /* PhoneSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DED25671E0FDD06E14B1DE9 /* PhoneSyncManager.swift */; };
 		E48D0B5700505037B609B8B1 /* WatchSyncWireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE49016FC47923DB4B438DF2 /* WatchSyncWireTests.swift */; };
 		E4EFFFB373103D8A16E73261 /* ChoreQuestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E689507EA24D73420DA7CDD /* ChoreQuestApp.swift */; };
 		E66B80402195D726BC46C2FD /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B5676C0E61F1F4BD36C9B1 /* Haptics.swift */; };
+		E84F5FD55CEC4EE969232F33 /* TodayWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43924569FC5CDBE545CD7130 /* TodayWidget.swift */; };
 		EA5DDA283C60F7D4A39C6626 /* ModelContext+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E926E39B0E66F62F66130B3 /* ModelContext+Save.swift */; };
 		F78EB2A008F9BABE9835A029 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EFD418CEB760447935F4D2 /* Color+Hex.swift */; };
 		FB8E2A237F0DE83EFE82EEBE /* CompletionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3C3895E56CDC05A167F9FF /* CompletionRow.swift */; };
@@ -72,6 +82,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 28219AD902E1E1E1D2E7C191;
 			remoteInfo = ChoreQuestWatch;
+		};
+		BC1E59AABB904E5AB70E026F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D86F391F442F0960F2A70BD5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7D27B7672D4EBA73E3B687BC;
+			remoteInfo = ChoreQuestWidgets;
 		};
 		DE23B3D242CD82FE9DD2CE08 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -94,6 +111,17 @@
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DB5DB52F4607DC2F6C2F2942 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CE1FD6A3D43FB652CCEE1DAF /* ChoreQuestWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -102,12 +130,14 @@
 		0B4C0E36DF95B80E7C5BB886 /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
 		0DED25671E0FDD06E14B1DE9 /* PhoneSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneSyncManager.swift; sourceTree = "<group>"; };
 		105743D4C026C33F9BD99BCA /* SyncModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncModels.swift; sourceTree = "<group>"; };
+		12A81EEBC00931C2330CD1F5 /* WidgetUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetUpdater.swift; sourceTree = "<group>"; };
 		20DC9013041DDCE5D24B36F3 /* Backup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backup.swift; sourceTree = "<group>"; };
 		25A4ED504558241EBF3D4093 /* DateUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtilsTests.swift; sourceTree = "<group>"; };
 		2DD8E539D7201ABADFA2B908 /* ChoreQuestWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreQuestWatchApp.swift; sourceTree = "<group>"; };
 		2E926E39B0E66F62F66130B3 /* ModelContext+Save.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModelContext+Save.swift"; sourceTree = "<group>"; };
 		3194198176B7610C6DB9653D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40A78283EDDC843678A6BB70 /* ModelAndBackupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelAndBackupTests.swift; sourceTree = "<group>"; };
+		43924569FC5CDBE545CD7130 /* TodayWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWidget.swift; sourceTree = "<group>"; };
 		47AA158D8B381D1EFF6C157B /* ParticipantChips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantChips.swift; sourceTree = "<group>"; };
 		4836F69535BC1F635A582CDE /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		4901A518D853CB635829B5F6 /* ParticipantEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantEditor.swift; sourceTree = "<group>"; };
@@ -122,6 +152,7 @@
 		83110D7AE987C525B2C304D9 /* SupabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseClient.swift; sourceTree = "<group>"; };
 		86C3DC4BE3C361539ED79B7E /* ChoreEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreEditor.swift; sourceTree = "<group>"; };
 		878AA7D100D644B3E54FEC70 /* ChoreTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreTile.swift; sourceTree = "<group>"; };
+		87FC18234BB1DCCB90E3C8BF /* ChoreQuestWidgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChoreQuestWidgets.entitlements; sourceTree = "<group>"; };
 		8CACC0DE355372D754C59053 /* ChoreQuest.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ChoreQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F9FB7B16DD1E3A9B4CD4050 /* Chore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chore.swift; sourceTree = "<group>"; };
 		909EDB58C2BE4B4868AAF045 /* CloudSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSyncManager.swift; sourceTree = "<group>"; };
@@ -139,8 +170,13 @@
 		D270F03A0151D134D4745D3A /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		D80AC582783598DBA649B27A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D81F21E41AE921951353BFF4 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		DEC35E788E9E4A6D1ECEEFDA /* ChoreQuest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ChoreQuest.entitlements; sourceTree = "<group>"; };
 		DF2FEA9E898B986DBDC9A1F8 /* QuickLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLogView.swift; sourceTree = "<group>"; };
+		E2F1C145FAA38BA42284F1EC /* LeaderboardWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardWidget.swift; sourceTree = "<group>"; };
+		E337060545532E57C01FB623 /* ChoreQuestWidgets.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = ChoreQuestWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8EF53A85F062BD3CD7C5DC5 /* ChoreQuestWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreQuestWidgetBundle.swift; sourceTree = "<group>"; };
 		EAD56A03980FDD8E208E4A94 /* WatchLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchLogView.swift; sourceTree = "<group>"; };
+		ECA46C1F51FD90A1E4846070 /* WidgetSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshot.swift; sourceTree = "<group>"; };
 		F0EFD418CEB760447935F4D2 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		F0F0AEDEC6D5A4713BC42462 /* WatchSyncDTOs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncDTOs.swift; sourceTree = "<group>"; };
 		F365058738AD57AABBD88507 /* PressableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressableButtonStyle.swift; sourceTree = "<group>"; };
@@ -159,6 +195,7 @@
 			children = (
 				DF87E396E6CE7EAC115DE61D /* ChoreQuest */,
 				D2D1C9BA041C15D9B3D44D0A /* ChoreQuestWatch */,
+				E193232D4CC1F960578BEF0E /* ChoreQuestWidgets */,
 				67DD964123721FF5479AF496 /* Shared */,
 				481B61DB693814BC1FD0FF36 /* Tests */,
 				3856F9B45EDB9FD4A588A6A2 /* Products */,
@@ -180,6 +217,7 @@
 				8CACC0DE355372D754C59053 /* ChoreQuest.app */,
 				ADBFAB0C49B9164D76E52421 /* ChoreQuestTests.xctest */,
 				A15F02DD2D84C33B8A855E25 /* ChoreQuestWatch.app */,
+				E337060545532E57C01FB623 /* ChoreQuestWidgets.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -232,6 +270,7 @@
 			children = (
 				F0F0AEDEC6D5A4713BC42462 /* WatchSyncDTOs.swift */,
 				71E17422B7E224843E177D01 /* WatchSyncPayloads.swift */,
+				ECA46C1F51FD90A1E4846070 /* WidgetSnapshot.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -298,6 +337,14 @@
 			path = Sync;
 			sourceTree = "<group>";
 		};
+		D0C00EE2B2C2C94CDDB09C5C /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				12A81EEBC00931C2330CD1F5 /* WidgetUpdater.swift */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
 		D2D1C9BA041C15D9B3D44D0A /* ChoreQuestWatch */ = {
 			isa = PBXGroup;
 			children = (
@@ -345,9 +392,22 @@
 				AF401658CB857361E937E86F /* Resources */,
 				DC110CAFB6218F34EEB272DA /* Sync */,
 				B51648502A090D8D8C3E9C41 /* Views */,
+				D0C00EE2B2C2C94CDDB09C5C /* Widgets */,
+				DEC35E788E9E4A6D1ECEEFDA /* ChoreQuest.entitlements */,
 				4E689507EA24D73420DA7CDD /* ChoreQuestApp.swift */,
 			);
 			path = ChoreQuest;
+			sourceTree = "<group>";
+		};
+		E193232D4CC1F960578BEF0E /* ChoreQuestWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				E8EF53A85F062BD3CD7C5DC5 /* ChoreQuestWidgetBundle.swift */,
+				87FC18234BB1DCCB90E3C8BF /* ChoreQuestWidgets.entitlements */,
+				E2F1C145FAA38BA42284F1EC /* LeaderboardWidget.swift */,
+				43924569FC5CDBE545CD7130 /* TodayWidget.swift */,
+			);
+			path = ChoreQuestWidgets;
 			sourceTree = "<group>";
 		};
 		F72C5284EE0EEBBB8A575EDA /* Views */ = {
@@ -387,18 +447,37 @@
 			productReference = A15F02DD2D84C33B8A855E25 /* ChoreQuestWatch.app */;
 			productType = "com.apple.product-type.application";
 		};
+		7D27B7672D4EBA73E3B687BC /* ChoreQuestWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0756E4F1C358140F2423CE6E /* Build configuration list for PBXNativeTarget "ChoreQuestWidgets" */;
+			buildPhases = (
+				ED36FD681CA75D9901FBAABA /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChoreQuestWidgets;
+			packageProductDependencies = (
+			);
+			productName = ChoreQuestWidgets;
+			productReference = E337060545532E57C01FB623 /* ChoreQuestWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		DB7FDBF76D5B64D8CE970EDF /* ChoreQuest */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 390DC204CEDD81B9606DBA82 /* Build configuration list for PBXNativeTarget "ChoreQuest" */;
 			buildPhases = (
 				252184BD747943FE54ADE312 /* Sources */,
 				C14BA935F5CE586D8C5222D9 /* Resources */,
+				DB5DB52F4607DC2F6C2F2942 /* Embed Foundation Extensions */,
 				2D95AC6911537124C6F16507 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				DC3903AE58234B78F284C3CD /* PBXTargetDependency */,
+				47B565D9E16D6E6156414226 /* PBXTargetDependency */,
 			);
 			name = ChoreQuest;
 			packageProductDependencies = (
@@ -438,6 +517,10 @@
 						DevelopmentTeam = D5TCJMS37M;
 						ProvisioningStyle = Automatic;
 					};
+					7D27B7672D4EBA73E3B687BC = {
+						DevelopmentTeam = D5TCJMS37M;
+						ProvisioningStyle = Automatic;
+					};
 					DB7FDBF76D5B64D8CE970EDF = {
 						DevelopmentTeam = D5TCJMS37M;
 						ProvisioningStyle = Automatic;
@@ -465,6 +548,7 @@
 				DB7FDBF76D5B64D8CE970EDF /* ChoreQuest */,
 				DED45E51C12515A8FDD252F9 /* ChoreQuestTests */,
 				28219AD902E1E1E1D2E7C191 /* ChoreQuestWatch */,
+				7D27B7672D4EBA73E3B687BC /* ChoreQuestWidgets */,
 			);
 		};
 /* End PBXProject section */
@@ -533,6 +617,8 @@
 				143795670435925C18AA216D /* TimeRange.swift in Sources */,
 				8BD0D5C493855CE98DED53EC /* WatchSyncDTOs.swift in Sources */,
 				621BACB3D3B9240CD7B4140C /* WatchSyncPayloads.swift in Sources */,
+				1112062B197C918894AB6820 /* WidgetSnapshot.swift in Sources */,
+				C17A56813E7AB6E04890848E /* WidgetUpdater.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +633,7 @@
 				AF8CEE4A1C22B60728491E77 /* WatchSyncDTOs.swift in Sources */,
 				DCF7FBB23F27B6E3A5F1B4C8 /* WatchSyncManager.swift in Sources */,
 				CEBE641754B5BEC812C68217 /* WatchSyncPayloads.swift in Sources */,
+				B04F70803B4777AB452E4E4A /* WidgetSnapshot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,6 +650,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		ED36FD681CA75D9901FBAABA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36DA00846EADC998FBABF103 /* AvatarView.swift in Sources */,
+				208A501FFE7F678D1B79AEFC /* ChoreQuestWidgetBundle.swift in Sources */,
+				413D3CB8948503AC5B2C7655 /* Color+Hex.swift in Sources */,
+				D058156A2A049E13B04651D3 /* LeaderboardWidget.swift in Sources */,
+				E84F5FD55CEC4EE969232F33 /* TodayWidget.swift in Sources */,
+				4EB4D0356C6E1CCDC02F9F5B /* WidgetSnapshot.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -570,6 +670,11 @@
 			isa = PBXTargetDependency;
 			target = DB7FDBF76D5B64D8CE970EDF /* ChoreQuest */;
 			targetProxy = DE23B3D242CD82FE9DD2CE08 /* PBXContainerItemProxy */;
+		};
+		47B565D9E16D6E6156414226 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7D27B7672D4EBA73E3B687BC /* ChoreQuestWidgets */;
+			targetProxy = BC1E59AABB904E5AB70E026F /* PBXContainerItemProxy */;
 		};
 		DC3903AE58234B78F284C3CD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -679,6 +784,27 @@
 			};
 			name = Release;
 		};
+		40C702ABAB1D40FF83385638 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ChoreQuestWidgets/ChoreQuestWidgets.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = ChoreQuestWidgets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jaoliveira98.chorequest.widgets;
+				PRODUCT_NAME = ChoreQuestWidgets;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		8267F07075F52D1B33BA1E95 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -768,6 +894,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ChoreQuest/ChoreQuest.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
@@ -814,11 +941,33 @@
 			};
 			name = Debug;
 		};
+		FC407287CF49B4F7B84648EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ChoreQuestWidgets/ChoreQuestWidgets.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = ChoreQuestWidgets/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jaoliveira98.chorequest.widgets;
+				PRODUCT_NAME = ChoreQuestWidgets;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
 		FD1E313D8C4F297CB393FAA9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ChoreQuest/ChoreQuest.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
@@ -844,6 +993,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0756E4F1C358140F2423CE6E /* Build configuration list for PBXNativeTarget "ChoreQuestWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC407287CF49B4F7B84648EA /* Debug */,
+				40C702ABAB1D40FF83385638 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 		093F449D492D5E22C95A7672 /* Build configuration list for PBXNativeTarget "ChoreQuestTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

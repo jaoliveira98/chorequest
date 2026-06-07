@@ -30,6 +30,14 @@ targets:
     dependencies:
       - target: ChoreQuestWatch
         embed: true
+      - target: ChoreQuestWidgets
+        embed: true
+    entitlements:
+      path: ChoreQuest/ChoreQuest.entitlements
+      properties:
+        # Shared container so the widget extension can read the snapshot the app writes.
+        com.apple.security.application-groups:
+          - group.com.jaoliveira98.chorequest
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.jaoliveira98.chorequest
@@ -97,6 +105,42 @@ targets:
         INFOPLIST_KEY_WKApplication: YES
         INFOPLIST_KEY_WKCompanionAppBundleIdentifier: com.jaoliveira98.chorequest
         INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
+
+  ChoreQuestWidgets:
+    type: app-extension
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: ChoreQuestWidgets
+        excludes: [Info.plist]
+      - path: Shared/WidgetSnapshot.swift
+      # Reuse the app's color + avatar helpers.
+      - path: ChoreQuest/Helpers/Color+Hex.swift
+      - path: ChoreQuest/Views/Components/AvatarView.swift
+    info:
+      # xcodegen writes the full Info.plist (CFBundleExecutable etc.) plus the
+      # widget extension point.
+      path: ChoreQuestWidgets/Info.plist
+      properties:
+        CFBundleDisplayName: ChoreQuest
+        # Must match the host app exactly or App Store/TestFlight validation fails.
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    entitlements:
+      path: ChoreQuestWidgets/ChoreQuestWidgets.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.jaoliveira98.chorequest
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.jaoliveira98.chorequest.widgets
+        PRODUCT_NAME: ChoreQuestWidgets
+        CURRENT_PROJECT_VERSION: "1"
+        MARKETING_VERSION: "1.0.0"
+        TARGETED_DEVICE_FAMILY: "1"
+        SWIFT_EMIT_LOC_STRINGS: YES
 
 schemes:
   ChoreQuest:
