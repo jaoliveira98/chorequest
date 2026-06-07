@@ -31,7 +31,14 @@ struct WatchLogView: View {
                     content
                 }
             }
-            .navigationTitle("ChoreQuest")
+            // A small, lighter title instead of the default large watchOS nav title.
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Text("ChoreQuest")
+                        .font(.footnote.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                }
+            }
             .overlay(alignment: .center) { confirmationPill }
             .task(id: participants.map(\.id)) {
                 // Commit the resolved selection so it stays stable across snapshot
