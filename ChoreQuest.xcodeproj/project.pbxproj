@@ -20,6 +20,7 @@
 		34EAF9A13B6C5E59377C2BE4 /* ChoreQuestWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A15F02DD2D84C33B8A855E25 /* ChoreQuestWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		36DA00846EADC998FBABF103 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270F03A0151D134D4745D3A /* AvatarView.swift */; };
 		3AB7A3EE3A6C7F40574A5FA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3194198176B7610C6DB9653D /* Assets.xcassets */; };
+		3FB4EFF18F6E3FF4FA153367 /* ChoreQuestComplications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D08BAB1A6A91364D9E88B5 /* ChoreQuestComplications.swift */; };
 		413D3CB8948503AC5B2C7655 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EFD418CEB760447935F4D2 /* Color+Hex.swift */; };
 		423DA0E6AABEBAA738B22866 /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F365058738AD57AABBD88507 /* PressableButtonStyle.swift */; };
 		42E0AB05FF0B0C41BD3ED863 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA95FF6DEE00CAB23C40B8C /* ConfettiView.swift */; };
@@ -66,6 +67,7 @@
 		D058156A2A049E13B04651D3 /* LeaderboardWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F1C145FAA38BA42284F1EC /* LeaderboardWidget.swift */; };
 		DCF7FBB23F27B6E3A5F1B4C8 /* WatchSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A5E004476357F41137E609 /* WatchSyncManager.swift */; };
 		DD08829A3B81CF429FC1E627 /* PhoneSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DED25671E0FDD06E14B1DE9 /* PhoneSyncManager.swift */; };
+		DDCC94D6FABDCCE8528BB414 /* ChoreQuestWatchWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 72E4A2F44ACEE1AE53E8D4A8 /* ChoreQuestWatchWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E48D0B5700505037B609B8B1 /* WatchSyncWireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE49016FC47923DB4B438DF2 /* WatchSyncWireTests.swift */; };
 		E4EFFFB373103D8A16E73261 /* ChoreQuestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E689507EA24D73420DA7CDD /* ChoreQuestApp.swift */; };
 		E66B80402195D726BC46C2FD /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B5676C0E61F1F4BD36C9B1 /* Haptics.swift */; };
@@ -76,6 +78,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		096573FBF5A48DF652233ED0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D86F391F442F0960F2A70BD5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF11D0B48ADAA2464D196731;
+			remoteInfo = ChoreQuestWatchWidgets;
+		};
 		30C00A6477E172A05C9A09CE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D86F391F442F0960F2A70BD5 /* Project object */;
@@ -109,6 +118,17 @@
 				34EAF9A13B6C5E59377C2BE4 /* ChoreQuestWatch.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D3BABF3840D933C580C8404 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DDCC94D6FABDCCE8528BB414 /* ChoreQuestWatchWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		DB5DB52F4607DC2F6C2F2942 /* Embed Foundation Extensions */ = {
@@ -147,6 +167,8 @@
 		6FEE234695F03FEF37089117 /* RewardPingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardPingView.swift; sourceTree = "<group>"; };
 		71A6E9D339F61A4FDB09057A /* ManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageView.swift; sourceTree = "<group>"; };
 		71E17422B7E224843E177D01 /* WatchSyncPayloads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncPayloads.swift; sourceTree = "<group>"; };
+		72D08BAB1A6A91364D9E88B5 /* ChoreQuestComplications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreQuestComplications.swift; sourceTree = "<group>"; };
+		72E4A2F44ACEE1AE53E8D4A8 /* ChoreQuestWatchWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ChoreQuestWatchWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CF8C814B57757682E87EE04 /* SyncableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncableModel.swift; sourceTree = "<group>"; };
 		81300E2182EC18B709FFCE79 /* SyncEncodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncEncodingTests.swift; sourceTree = "<group>"; };
 		83110D7AE987C525B2C304D9 /* SupabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseClient.swift; sourceTree = "<group>"; };
@@ -195,6 +217,7 @@
 			children = (
 				DF87E396E6CE7EAC115DE61D /* ChoreQuest */,
 				D2D1C9BA041C15D9B3D44D0A /* ChoreQuestWatch */,
+				AD491DC30BE4DEF0EFE879E7 /* ChoreQuestWatchWidgets */,
 				E193232D4CC1F960578BEF0E /* ChoreQuestWidgets */,
 				67DD964123721FF5479AF496 /* Shared */,
 				481B61DB693814BC1FD0FF36 /* Tests */,
@@ -217,6 +240,7 @@
 				8CACC0DE355372D754C59053 /* ChoreQuest.app */,
 				ADBFAB0C49B9164D76E52421 /* ChoreQuestTests.xctest */,
 				A15F02DD2D84C33B8A855E25 /* ChoreQuestWatch.app */,
+				72E4A2F44ACEE1AE53E8D4A8 /* ChoreQuestWatchWidgets.appex */,
 				E337060545532E57C01FB623 /* ChoreQuestWidgets.appex */,
 			);
 			name = Products;
@@ -283,6 +307,14 @@
 				4EE177524D0410ABD8BA1E72 /* TimeRange.swift */,
 			);
 			path = Leaderboard;
+			sourceTree = "<group>";
+		};
+		AD491DC30BE4DEF0EFE879E7 /* ChoreQuestWatchWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				72D08BAB1A6A91364D9E88B5 /* ChoreQuestComplications.swift */,
+			);
+			path = ChoreQuestWatchWidgets;
 			sourceTree = "<group>";
 		};
 		AF401658CB857361E937E86F /* Resources */ = {
@@ -435,10 +467,12 @@
 			buildPhases = (
 				361B23E59E9A63FE4D6F96FE /* Sources */,
 				9FFC769CA87C6E17063153A7 /* Resources */,
+				6D3BABF3840D933C580C8404 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				993D6356754B1D958BDAAF77 /* PBXTargetDependency */,
 			);
 			name = ChoreQuestWatch;
 			packageProductDependencies = (
@@ -504,6 +538,23 @@
 			productReference = ADBFAB0C49B9164D76E52421 /* ChoreQuestTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		FF11D0B48ADAA2464D196731 /* ChoreQuestWatchWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45C0DF2D0ED1DCF25C247938 /* Build configuration list for PBXNativeTarget "ChoreQuestWatchWidgets" */;
+			buildPhases = (
+				FE097078D32AE6643DDBF988 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChoreQuestWatchWidgets;
+			packageProductDependencies = (
+			);
+			productName = ChoreQuestWatchWidgets;
+			productReference = 72E4A2F44ACEE1AE53E8D4A8 /* ChoreQuestWatchWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -529,6 +580,10 @@
 						DevelopmentTeam = D5TCJMS37M;
 						ProvisioningStyle = Automatic;
 					};
+					FF11D0B48ADAA2464D196731 = {
+						DevelopmentTeam = D5TCJMS37M;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 54FB0EBE5FBBD4BDD2EEDBB3 /* Build configuration list for PBXProject "ChoreQuest" */;
@@ -548,6 +603,7 @@
 				DB7FDBF76D5B64D8CE970EDF /* ChoreQuest */,
 				DED45E51C12515A8FDD252F9 /* ChoreQuestTests */,
 				28219AD902E1E1E1D2E7C191 /* ChoreQuestWatch */,
+				FF11D0B48ADAA2464D196731 /* ChoreQuestWatchWidgets */,
 				7D27B7672D4EBA73E3B687BC /* ChoreQuestWidgets */,
 			);
 		};
@@ -663,6 +719,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FE097078D32AE6643DDBF988 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FB4EFF18F6E3FF4FA153367 /* ChoreQuestComplications.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -675,6 +739,11 @@
 			isa = PBXTargetDependency;
 			target = 7D27B7672D4EBA73E3B687BC /* ChoreQuestWidgets */;
 			targetProxy = BC1E59AABB904E5AB70E026F /* PBXContainerItemProxy */;
+		};
+		993D6356754B1D958BDAAF77 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF11D0B48ADAA2464D196731 /* ChoreQuestWatchWidgets */;
+			targetProxy = 096573FBF5A48DF652233ED0 /* PBXContainerItemProxy */;
 		};
 		DC3903AE58234B78F284C3CD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -871,6 +940,27 @@
 			};
 			name = Debug;
 		};
+		B20E89DCCF8CBFAE0563207F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = ChoreQuestWatchWidgets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jaoliveira98.chorequest.watchkitapp.widgets;
+				PRODUCT_NAME = ChoreQuestWatchWidgets;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
 		E647BCF59CF62776EDC5732C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -933,6 +1023,27 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaoliveira98.chorequest.watchkitapp;
 				PRODUCT_NAME = ChoreQuestWatch;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		EEE517EA112117026BDD882C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				INFOPLIST_FILE = ChoreQuestWatchWidgets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jaoliveira98.chorequest.watchkitapp.widgets;
+				PRODUCT_NAME = ChoreQuestWatchWidgets;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1016,6 +1127,15 @@
 			buildConfigurations = (
 				EAEDF059D0DD816B139C1F55 /* Debug */,
 				FD1E313D8C4F297CB393FAA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		45C0DF2D0ED1DCF25C247938 /* Build configuration list for PBXNativeTarget "ChoreQuestWatchWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEE517EA112117026BDD882C /* Debug */,
+				B20E89DCCF8CBFAE0563207F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
