@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "28219AD902E1E1E1D2E7C191"
-               BuildableName = "ChoreQuest.app"
+               BuildableName = "ChoreQuestWatch.app"
                BlueprintName = "ChoreQuestWatch"
                ReferencedContainer = "container:ChoreQuest.xcodeproj">
             </BuildableReference>
@@ -31,7 +31,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "28219AD902E1E1E1D2E7C191"
-            BuildableName = "ChoreQuest.app"
+            BuildableName = "ChoreQuestWatch.app"
             BlueprintName = "ChoreQuestWatch"
             ReferencedContainer = "container:ChoreQuest.xcodeproj">
          </BuildableReference>
@@ -54,7 +54,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "28219AD902E1E1E1D2E7C191"
-            BuildableName = "ChoreQuest.app"
+            BuildableName = "ChoreQuestWatch.app"
             BlueprintName = "ChoreQuestWatch"
             ReferencedContainer = "container:ChoreQuest.xcodeproj">
          </BuildableReference>
@@ -71,7 +71,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "28219AD902E1E1E1D2E7C191"
-            BuildableName = "ChoreQuest.app"
+            BuildableName = "ChoreQuestWatch.app"
             BlueprintName = "ChoreQuestWatch"
             ReferencedContainer = "container:ChoreQuest.xcodeproj">
          </BuildableReference>

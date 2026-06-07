@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		038C0FCEB2D59D246B62583B /* ChoreQuestShortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469A12928A55274E8C6C325F /* ChoreQuestShortcuts.swift */; };
+		08287EBCF24408DBB126B82B /* QuickLogIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF879231096F8D30E8D7022B /* QuickLogIntent.swift */; };
 		1112062B197C918894AB6820 /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA46C1F51FD90A1E4846070 /* WidgetSnapshot.swift */; };
 		143795670435925C18AA216D /* TimeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE177524D0410ABD8BA1E72 /* TimeRange.swift */; };
 		146AD06CE72D90952F5E191B /* ChoreTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878AA7D100D644B3E54FEC70 /* ChoreTile.swift */; };
 		1759F3E7EE798B1D8258EBA6 /* ModelAndBackupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A78283EDDC843678A6BB70 /* ModelAndBackupTests.swift */; };
 		1B71AA4006A3B825E2E6F511 /* ParticipantEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4901A518D853CB635829B5F6 /* ParticipantEditor.swift */; };
+		1BB989020C64CC10AF68D3C7 /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F908D4A5D6373E3E2FBF1 /* Participant.swift */; };
 		1F8FF076D9A4ED92D7381ECB /* Participant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029F908D4A5D6373E3E2FBF1 /* Participant.swift */; };
 		208A501FFE7F678D1B79AEFC /* ChoreQuestWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EF53A85F062BD3CD7C5DC5 /* ChoreQuestWidgetBundle.swift */; };
+		20D8BFDD2F175E0F200C71AD /* Chore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9FB7B16DD1E3A9B4CD4050 /* Chore.swift */; };
 		223053AD5C16A511BD8B7E9C /* ChoreQuestEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369A1AFE670BA4D7A06F62C1 /* ChoreQuestEntities.swift */; };
 		24E079228A9099A7A74E5430 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D80AC582783598DBA649B27A /* Assets.xcassets */; };
 		2B7BD0B7FF2F76C5215BB6B2 /* ChoreQuestWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD8E539D7201ABADFA2B908 /* ChoreQuestWatchApp.swift */; };
@@ -23,6 +26,7 @@
 		34EAF9A13B6C5E59377C2BE4 /* ChoreQuestWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A15F02DD2D84C33B8A855E25 /* ChoreQuestWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		36DA00846EADC998FBABF103 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270F03A0151D134D4745D3A /* AvatarView.swift */; };
 		3AB7A3EE3A6C7F40574A5FA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3194198176B7610C6DB9653D /* Assets.xcassets */; };
+		3D76795E0484466D537853BF /* ChoreQuestEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369A1AFE670BA4D7A06F62C1 /* ChoreQuestEntities.swift */; };
 		3FB4EFF18F6E3FF4FA153367 /* ChoreQuestComplications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D08BAB1A6A91364D9E88B5 /* ChoreQuestComplications.swift */; };
 		413D3CB8948503AC5B2C7655 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EFD418CEB760447935F4D2 /* Color+Hex.swift */; };
 		423DA0E6AABEBAA738B22866 /* PressableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F365058738AD57AABBD88507 /* PressableButtonStyle.swift */; };
@@ -37,10 +41,13 @@
 		547F7B240B885A2291C5033C /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270F03A0151D134D4745D3A /* AvatarView.swift */; };
 		55CB3FD06604E4809757F33D /* LeaderboardRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E7285C9A80EBE38A60B58F /* LeaderboardRow.swift */; };
 		58164F66B5AE52EB1E3F66CA /* RewardPingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FEE234695F03FEF37089117 /* RewardPingView.swift */; };
+		590EF18F9C332DEA97500EF8 /* AppModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B75397FF6B9A1DD46F0C29 /* AppModelContainer.swift */; };
 		613B9F793377CA43D62E46C9 /* Chore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9FB7B16DD1E3A9B4CD4050 /* Chore.swift */; };
 		621BACB3D3B9240CD7B4140C /* WatchSyncPayloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E17422B7E224843E177D01 /* WatchSyncPayloads.swift */; };
 		642BA6CADE4E2CA60F893576 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D270F03A0151D134D4745D3A /* AvatarView.swift */; };
 		6650E280C087E717D99AC350 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE37F2A53BA6EF08B5457930 /* LeaderboardView.swift */; };
+		6D7B0EC40B37D834C33D5C45 /* Completion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88ECC0400BBDD66EF64BCDA /* Completion.swift */; };
+		724B03175F6DDCBD55477429 /* QuickLogWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F83225E1756774CBAC4A66 /* QuickLogWidget.swift */; };
 		735944A84A637D6EE8AA40CB /* ManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A6E9D339F61A4FDB09057A /* ManageView.swift */; };
 		7C343EA3571AEE1D98EB9600 /* SyncModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 105743D4C026C33F9BD99BCA /* SyncModels.swift */; };
 		826EFA347464BD15DDF44E20 /* Completion.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88ECC0400BBDD66EF64BCDA /* Completion.swift */; };
@@ -49,6 +56,7 @@
 		8BD0D5C493855CE98DED53EC /* WatchSyncDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F0AEDEC6D5A4713BC42462 /* WatchSyncDTOs.swift */; };
 		8F544DABFF84140A59AB591F /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4836F69535BC1F635A582CDE /* Palette.swift */; };
 		913A2427A581395DC12F4BAC /* EmojiPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF63A9A24C5AE11B3FC2F15F /* EmojiPicker.swift */; };
+		95E28ECBECB48EF5841B8DA3 /* SyncableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF8C814B57757682E87EE04 /* SyncableModel.swift */; };
 		9C7821C47695FBB8DD7066B7 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF814F6FCA440A9722B8D7A3 /* StatsView.swift */; };
 		A6BAF7E46CEF8397D3DDA2CD /* SupabaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C200D7B14B224D19855EEEEA /* SupabaseConfig.swift */; };
 		AB0D1FBFC3016C052E5B0D01 /* WatchLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD56A03980FDD8E208E4A94 /* WatchLogView.swift */; };
@@ -64,11 +72,14 @@
 		BABB4BFEFB4E84DDDCDE9B29 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24146AD83A844DCCF236D19 /* Date+Extensions.swift */; };
 		C17A56813E7AB6E04890848E /* WidgetUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A81EEBC00931C2330CD1F5 /* WidgetUpdater.swift */; };
 		C527116DD415C8E0589FB329 /* SyncEncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81300E2182EC18B709FFCE79 /* SyncEncodingTests.swift */; };
+		C7EA3BA27DEA6EC99E9EB9DD /* QuickLogIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF879231096F8D30E8D7022B /* QuickLogIntent.swift */; };
+		C85266E2AE8082CD08BDE1C7 /* StoreMigrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5542F8E6A6EF47B4985553 /* StoreMigrationTests.swift */; };
 		C947BE81C1201AC1027B0DCE /* BackupDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE99BAD07347A2C308866E /* BackupDocument.swift */; };
 		CE1FD6A3D43FB652CCEE1DAF /* ChoreQuestWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E337060545532E57C01FB623 /* ChoreQuestWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CEBE641754B5BEC812C68217 /* WatchSyncPayloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E17422B7E224843E177D01 /* WatchSyncPayloads.swift */; };
 		D058156A2A049E13B04651D3 /* LeaderboardWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F1C145FAA38BA42284F1EC /* LeaderboardWidget.swift */; };
 		DA4B34FE590526DCA8D7E99C /* AppModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B75397FF6B9A1DD46F0C29 /* AppModelContainer.swift */; };
+		DA73FDEA75C83E7ED23BBAE5 /* TimeRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE177524D0410ABD8BA1E72 /* TimeRange.swift */; };
 		DCF7FBB23F27B6E3A5F1B4C8 /* WatchSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A5E004476357F41137E609 /* WatchSyncManager.swift */; };
 		DD08829A3B81CF429FC1E627 /* PhoneSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DED25671E0FDD06E14B1DE9 /* PhoneSyncManager.swift */; };
 		DDCC94D6FABDCCE8528BB414 /* ChoreQuestWatchWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 72E4A2F44ACEE1AE53E8D4A8 /* ChoreQuestWatchWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -77,6 +88,8 @@
 		E66B80402195D726BC46C2FD /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B5676C0E61F1F4BD36C9B1 /* Haptics.swift */; };
 		E84F5FD55CEC4EE969232F33 /* TodayWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43924569FC5CDBE545CD7130 /* TodayWidget.swift */; };
 		EA5DDA283C60F7D4A39C6626 /* ModelContext+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E926E39B0E66F62F66130B3 /* ModelContext+Save.swift */; };
+		F2EE65EC59453EFCF6481AE6 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24146AD83A844DCCF236D19 /* Date+Extensions.swift */; };
+		F31159F4C2563A2CCAC99B8D /* WidgetUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A81EEBC00931C2330CD1F5 /* WidgetUpdater.swift */; };
 		F78EB2A008F9BABE9835A029 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EFD418CEB760447935F4D2 /* Color+Hex.swift */; };
 		FB8E2A237F0DE83EFE82EEBE /* CompletionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3C3895E56CDC05A167F9FF /* CompletionRow.swift */; };
 /* End PBXBuildFile section */
@@ -185,6 +198,7 @@
 		8CACC0DE355372D754C59053 /* ChoreQuest.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = ChoreQuest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F9FB7B16DD1E3A9B4CD4050 /* Chore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chore.swift; sourceTree = "<group>"; };
 		909EDB58C2BE4B4868AAF045 /* CloudSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSyncManager.swift; sourceTree = "<group>"; };
+		94F83225E1756774CBAC4A66 /* QuickLogWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLogWidget.swift; sourceTree = "<group>"; };
 		9E2507A8DE6065B99C93B5B4 /* CloudSyncMergeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudSyncMergeTests.swift; sourceTree = "<group>"; };
 		A0A5E004476357F41137E609 /* WatchSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncManager.swift; sourceTree = "<group>"; };
 		A15F02DD2D84C33B8A855E25 /* ChoreQuestWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoreQuestWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -192,6 +206,7 @@
 		ADBFAB0C49B9164D76E52421 /* ChoreQuestTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ChoreQuestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE37F2A53BA6EF08B5457930 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		AF3C3895E56CDC05A167F9FF /* CompletionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionRow.swift; sourceTree = "<group>"; };
+		AF879231096F8D30E8D7022B /* QuickLogIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLogIntent.swift; sourceTree = "<group>"; };
 		BF63A9A24C5AE11B3FC2F15F /* EmojiPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPicker.swift; sourceTree = "<group>"; };
 		C200D7B14B224D19855EEEEA /* SupabaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseConfig.swift; sourceTree = "<group>"; };
 		C4B5676C0E61F1F4BD36C9B1 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
@@ -204,6 +219,7 @@
 		E2F1C145FAA38BA42284F1EC /* LeaderboardWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardWidget.swift; sourceTree = "<group>"; };
 		E337060545532E57C01FB623 /* ChoreQuestWidgets.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = ChoreQuestWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8EF53A85F062BD3CD7C5DC5 /* ChoreQuestWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreQuestWidgetBundle.swift; sourceTree = "<group>"; };
+		EA5542F8E6A6EF47B4985553 /* StoreMigrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreMigrationTests.swift; sourceTree = "<group>"; };
 		EAD56A03980FDD8E208E4A94 /* WatchLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchLogView.swift; sourceTree = "<group>"; };
 		ECA46C1F51FD90A1E4846070 /* WidgetSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshot.swift; sourceTree = "<group>"; };
 		EE456563118B871FDDC6329D /* ChoreQuestIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreQuestIntents.swift; sourceTree = "<group>"; };
@@ -239,6 +255,7 @@
 				369A1AFE670BA4D7A06F62C1 /* ChoreQuestEntities.swift */,
 				EE456563118B871FDDC6329D /* ChoreQuestIntents.swift */,
 				469A12928A55274E8C6C325F /* ChoreQuestShortcuts.swift */,
+				AF879231096F8D30E8D7022B /* QuickLogIntent.swift */,
 			);
 			path = Intents;
 			sourceTree = "<group>";
@@ -281,6 +298,7 @@
 				FA684CE855A731B2BD6A3BC8 /* ColorHexTests.swift */,
 				25A4ED504558241EBF3D4093 /* DateUtilsTests.swift */,
 				40A78283EDDC843678A6BB70 /* ModelAndBackupTests.swift */,
+				EA5542F8E6A6EF47B4985553 /* StoreMigrationTests.swift */,
 				81300E2182EC18B709FFCE79 /* SyncEncodingTests.swift */,
 				FE49016FC47923DB4B438DF2 /* WatchSyncWireTests.swift */,
 			);
@@ -457,6 +475,7 @@
 				E8EF53A85F062BD3CD7C5DC5 /* ChoreQuestWidgetBundle.swift */,
 				87FC18234BB1DCCB90E3C8BF /* ChoreQuestWidgets.entitlements */,
 				E2F1C145FAA38BA42284F1EC /* LeaderboardWidget.swift */,
+				94F83225E1756774CBAC4A66 /* QuickLogWidget.swift */,
 				43924569FC5CDBE545CD7130 /* TodayWidget.swift */,
 			);
 			path = ChoreQuestWidgets;
@@ -685,6 +704,7 @@
 				1B71AA4006A3B825E2E6F511 /* ParticipantEditor.swift in Sources */,
 				DD08829A3B81CF429FC1E627 /* PhoneSyncManager.swift in Sources */,
 				423DA0E6AABEBAA738B22866 /* PressableButtonStyle.swift in Sources */,
+				C7EA3BA27DEA6EC99E9EB9DD /* QuickLogIntent.swift in Sources */,
 				ACAE40B7028EC91468ED584C /* QuickLogView.swift in Sources */,
 				58164F66B5AE52EB1E3F66CA /* RewardPingView.swift in Sources */,
 				324C2AC96BAB3F5F0ED8D035 /* RootTabView.swift in Sources */,
@@ -725,6 +745,7 @@
 				4B8950BADC248730D642FB9B /* ColorHexTests.swift in Sources */,
 				B69C0E5DB3EFA3E51E85BDA8 /* DateUtilsTests.swift in Sources */,
 				1759F3E7EE798B1D8258EBA6 /* ModelAndBackupTests.swift in Sources */,
+				C85266E2AE8082CD08BDE1C7 /* StoreMigrationTests.swift in Sources */,
 				C527116DD415C8E0589FB329 /* SyncEncodingTests.swift in Sources */,
 				E48D0B5700505037B609B8B1 /* WatchSyncWireTests.swift in Sources */,
 			);
@@ -734,12 +755,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				590EF18F9C332DEA97500EF8 /* AppModelContainer.swift in Sources */,
 				36DA00846EADC998FBABF103 /* AvatarView.swift in Sources */,
+				20D8BFDD2F175E0F200C71AD /* Chore.swift in Sources */,
+				3D76795E0484466D537853BF /* ChoreQuestEntities.swift in Sources */,
 				208A501FFE7F678D1B79AEFC /* ChoreQuestWidgetBundle.swift in Sources */,
 				413D3CB8948503AC5B2C7655 /* Color+Hex.swift in Sources */,
+				6D7B0EC40B37D834C33D5C45 /* Completion.swift in Sources */,
+				F2EE65EC59453EFCF6481AE6 /* Date+Extensions.swift in Sources */,
 				D058156A2A049E13B04651D3 /* LeaderboardWidget.swift in Sources */,
+				1BB989020C64CC10AF68D3C7 /* Participant.swift in Sources */,
+				08287EBCF24408DBB126B82B /* QuickLogIntent.swift in Sources */,
+				724B03175F6DDCBD55477429 /* QuickLogWidget.swift in Sources */,
+				95E28ECBECB48EF5841B8DA3 /* SyncableModel.swift in Sources */,
+				DA73FDEA75C83E7ED23BBAE5 /* TimeRange.swift in Sources */,
 				E84F5FD55CEC4EE969232F33 /* TodayWidget.swift in Sources */,
 				4EB4D0356C6E1CCDC02F9F5B /* WidgetSnapshot.swift in Sources */,
+				F31159F4C2563A2CCAC99B8D /* WidgetUpdater.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

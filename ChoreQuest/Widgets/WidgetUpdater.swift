@@ -39,8 +39,13 @@ enum WidgetUpdater {
             return lhs.name.localizedCaseInsensitiveCompare(rhs.name) == .orderedAscending
         }
 
+        let choreList = ((try? context.fetch(FetchDescriptor<Chore>(sortBy: [SortDescriptor(\Chore.sortOrder)]))) ?? [])
+            .filter { !$0.isSoftDeleted && !$0.isArchived }
+            .map { WidgetSnapshot.Chore(id: $0.uuid, name: $0.name, emoji: $0.emoji,
+                                        points: $0.points, colorHex: $0.colorHex) }
+
         let snapshot = WidgetSnapshot(generatedAt: .now, standings: standings,
-                                      todayTotal: todayTotal, weekTotal: weekTotal)
+                                      todayTotal: todayTotal, weekTotal: weekTotal, chores: choreList)
         // Skip the write + timeline reload when nothing actually changed (this runs
         // on every sync, incl. the periodic foreground poll) to avoid churn and the
         // WidgetKit reload budget.

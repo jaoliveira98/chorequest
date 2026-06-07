@@ -41,6 +41,7 @@ struct ParticipantEntity: AppEntity {
     let id: UUID
     let name: String
     let emoji: String
+    var colorHex: String = "#7C5CFF"
 
     static var typeDisplayRepresentation: TypeDisplayRepresentation { "Person" }
     var displayRepresentation: DisplayRepresentation {
@@ -65,7 +66,7 @@ struct ParticipantQuery: EntityQuery {
         let people = (try? context.fetch(descriptor)) ?? []
         return people
             .filter { !$0.isSoftDeleted }
-            .map { ParticipantEntity(id: $0.uuid, name: $0.name, emoji: $0.emoji) }
+            .map { ParticipantEntity(id: $0.uuid, name: $0.name, emoji: $0.emoji, colorHex: $0.colorHex) }
     }
 }
 

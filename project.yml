@@ -146,6 +146,15 @@ targets:
       # Reuse the app's color + avatar helpers.
       - path: ChoreQuest/Helpers/Color+Hex.swift
       - path: ChoreQuest/Views/Components/AvatarView.swift
+      # Data layer shared so the interactive Quick Log button intent can write to
+      # the (App Group) store from the widget.
+      - path: ChoreQuest/Models
+      - path: ChoreQuest/AppModelContainer.swift
+      - path: ChoreQuest/Widgets/WidgetUpdater.swift
+      - path: ChoreQuest/Views/Leaderboard/TimeRange.swift
+      - path: ChoreQuest/Helpers/Date+Extensions.swift
+      - path: ChoreQuest/Intents/ChoreQuestEntities.swift
+      - path: ChoreQuest/Intents/QuickLogIntent.swift
     info:
       # xcodegen writes the full Info.plist (CFBundleExecutable etc.) plus the
       # widget extension point.

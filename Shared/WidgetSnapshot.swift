@@ -14,11 +14,13 @@ struct WidgetSnapshot: Codable, Equatable {
     var standings: [Standing]
     var todayTotal: Int
     var weekTotal: Int
+    var chores: [Chore] = []   // active chores, for the Quick Log widget's buttons
 
     // Equality ignores generatedAt so the app can skip re-publishing (and waking
     // WidgetKit) when the actual content hasn't changed.
     static func == (lhs: WidgetSnapshot, rhs: WidgetSnapshot) -> Bool {
-        lhs.standings == rhs.standings && lhs.todayTotal == rhs.todayTotal && lhs.weekTotal == rhs.weekTotal
+        lhs.standings == rhs.standings && lhs.todayTotal == rhs.todayTotal
+            && lhs.weekTotal == rhs.weekTotal && lhs.chores == rhs.chores
     }
 
     struct Standing: Codable, Identifiable, Hashable {
@@ -30,7 +32,15 @@ struct WidgetSnapshot: Codable, Equatable {
         var todayPoints: Int
     }
 
-    static let empty = WidgetSnapshot(generatedAt: .distantPast, standings: [], todayTotal: 0, weekTotal: 0)
+    struct Chore: Codable, Identifiable, Hashable {
+        var id: UUID
+        var name: String
+        var emoji: String
+        var points: Int
+        var colorHex: String?
+    }
+
+    static let empty = WidgetSnapshot(generatedAt: .distantPast, standings: [], todayTotal: 0, weekTotal: 0, chores: [])
 
     /// Placeholder content for the widget gallery / first render.
     static let sample = WidgetSnapshot(
@@ -40,7 +50,13 @@ struct WidgetSnapshot: Codable, Equatable {
             .init(id: UUID(), name: "Sofia", emoji: "🐼", colorHex: "#4DB6AC", weekPoints: 19, todayPoints: 4)
         ],
         todayTotal: 10,
-        weekTotal: 43
+        weekTotal: 43,
+        chores: [
+            .init(id: UUID(), name: "Dishes", emoji: "🍽️", points: 2, colorHex: "#4FC3F7"),
+            .init(id: UUID(), name: "Dog pad", emoji: "🧼", points: 1, colorHex: "#81C784"),
+            .init(id: UUID(), name: "Trash", emoji: "🗑️", points: 2, colorHex: "#A1887F"),
+            .init(id: UUID(), name: "Cook", emoji: "🍳", points: 3, colorHex: "#FF8A65")
+        ]
     )
 }
 
